@@ -145,3 +145,37 @@ Status RBTreeLeftRotate(RBRoot *root, Node *node) {
     p->left = node;
     node->parent = p;
 }
+
+/**
+ * 将红黑树的结点node右旋
+ *
+ * 示例: 对结点1右旋
+ *        1                 2
+ *      /  \              /  \
+ *     2    3    -->     4    1
+ *   /  \                   /  \
+ *  4    5                 5    3
+ *
+ * @param[in]  root: the root of the red-black tree
+ * @param[in]  node: the node of the red-black tree
+ * @return  the operation status, OK is 0, ERROR is -1
+ */
+Status RBTreeRightRotate(RBRoot *root, Node *node) {
+    Node *p = node->left;
+
+    if (p->right) {
+        node->left = p->right;
+        p->right->parent = node;
+    } else node->right = NULL;
+
+    p->parent = node->parent;
+
+    if (!node->parent) root->node = p;
+    else {
+        if (node == node->parent->right) node->parent->right = p;
+        else node->parent->left = p;
+    }
+
+    p->right = node;
+    node->parent = p;
+}
