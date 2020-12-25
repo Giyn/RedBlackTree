@@ -33,4 +33,13 @@ RBRoot *create_rbtree();
 /* 销毁红黑树 */
 void destroy_rbtree(RBRoot *root);
 
+/* 前序遍历红黑树 */
+void preorder_rbtree(RBRoot *root);
+
+/* 中序遍历红黑树 */
+void inorder_rbtree(RBRoot *root);
+
+/* 后序遍历红黑树 */
+void postorder_rbtree(RBRoot *root);
+
 #endif /* RBTREE_RBTREE_H */
