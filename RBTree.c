@@ -13,6 +13,10 @@
 #define rb_parent(r) ((r)->parent)
 #define rb_is_red(r) ((r)->color == RED)
 #define rb_is_black(r) ((r)->color == BLACK)
+#define rb_set_color(r, c) do {(r)->color = (c);} while(0)
+#define rb_set_parent(r, p) do {(r)->parent = (p);} while(0)
+#define rb_set_red(r) do {(r)->color = RED;} while(0)
+#define rb_set_black(r) do {(r)->color = BLACK;} while(0)
 
 /**
  * 创建红黑树
@@ -157,7 +161,7 @@ Status postorderRBTree(RBRoot *root) {
  * @param[in]  x   : the data of the node
  * @return  the target node
  */
-static Node *search(RBTree tree, RBTreeElemType x) {
+static RBTree search(RBTree tree, RBTreeElemType x) {
     if (!tree || tree->data == x) return tree;
     else if (tree->data > x) return search(tree->left, x);
     else return search(tree->right, x);
