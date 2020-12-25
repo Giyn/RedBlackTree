@@ -27,19 +27,24 @@ typedef struct rb_root {
     Node *node;
 } RBRoot;
 
+typedef enum {
+    OK = 0,
+    ERROR = -1
+} Status;
+
 /* 创建红黑树 */
 RBRoot *create_rbtree();
 
 /* 销毁红黑树 */
-void destroy_rbtree(RBRoot *root);
+Status destroy_rbtree(RBRoot *root);
 
 /* 前序遍历红黑树 */
-void preorder_rbtree(RBRoot *root);
+Status preorder_rbtree(RBRoot *root);
 
 /* 中序遍历红黑树 */
-void inorder_rbtree(RBRoot *root);
+Status inorder_rbtree(RBRoot *root);
 
 /* 后序遍历红黑树 */
-void postorder_rbtree(RBRoot *root);
+Status postorder_rbtree(RBRoot *root);
 
 #endif /* RBTREE_RBTREE_H */

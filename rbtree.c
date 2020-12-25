@@ -31,27 +31,32 @@ RBRoot *create_rbtree() {
  * 销毁二叉树
  *
  * @param[in]  tree  the node of the binary tree
- * @return  none
+ * @return  the operation status, OK is 0, ERROR is -1
  */
-static void destroy_binary_tree(RBTree tree) {
-    if (!tree) return;
+static Status destroy_binary_tree(RBTree tree) {
+    if (!tree) return ERROR;
 
     if (tree->left) destroy_binary_tree(tree->left);
     if (tree->right) destroy_binary_tree(tree->right);
 
     free(tree);
+
+    return OK;
 }
 
 /**
  * 销毁红黑树
  *
  * @param[in]  root  the root of the red-black tree
- * @return  none
+ * @return  the operation status, OK is 0, ERROR is -1
  */
-void destroy_rbtree(RBRoot *root) {
-    if (root) destroy_binary_tree(root->node);
+Status destroy_rbtree(RBRoot *root) {
+    if (!root) return ERROR;
+    else destroy_binary_tree(root->node);
 
     free(root);
+
+    return OK;
 }
 
 
@@ -59,70 +64,88 @@ void destroy_rbtree(RBRoot *root) {
  * 前序遍历二叉树
  *
  * @param[in]  tree: the node of the binary tree
- * @return  none
+ * @return  the operation status, OK is 0, ERROR is -1
  */
-static void preorder(RBTree tree) {
-    if (tree) {
+static Status preorder(RBTree tree) {
+    if (!tree) return ERROR;
+    else {
         printf("%d ", tree->key);
         preorder(tree->left);
         preorder(tree->right);
     }
+
+    return OK;
 }
 
 /**
  * 前序遍历红黑树
  *
  * @param[in]  root: the root of the red-black tree
- * @return  none
+ * @return  the operation status, OK is 0, ERROR is -1
  */
-void preorder_rbtree(RBRoot *root) {
-    if (root) preorder(root->node);
+Status preorder_rbtree(RBRoot *root) {
+    if (!root) return ERROR;
+    else preorder(root->node);
+
+    return OK;
 }
 
 /**
  * 中序遍历二叉树
  *
  * @param[in]  tree: the node of the binary tree
- * @return  none
+ * @return  the operation status, OK is 0, ERROR is -1
  */
-static void inorder(RBTree tree) {
-    if (tree) {
+static Status inorder(RBTree tree) {
+    if (!tree) return ERROR;
+    else {
         inorder(tree->left);
         printf("%d ", tree->key);
         inorder(tree->right);
     }
+
+    return OK;
 }
 
 /**
  * 中序遍历红黑树
  *
  * @param[in]  root: the root of the red-black tree
- * @return  none
+ * @return  the operation status, OK is 0, ERROR is -1
  */
-void inorder_rbtree(RBRoot *root) {
-    if (root) inorder(root->node);
+Status inorder_rbtree(RBRoot *root) {
+    if (!root) return ERROR;
+    else inorder(root->node);
+
+    return OK;
 }
 
 /**
  * 后序遍历二叉树
  *
  * @param[in]  tree: the node of the binary tree
- * @return  none
+ * @return  the operation status, OK is 0, ERROR is -1
  */
-static void postorder(RBTree tree) {
-    if (tree) {
+static Status postorder(RBTree tree) {
+    if (!tree) return ERROR;
+    else {
         postorder(tree->left);
         postorder(tree->right);
         printf("%d ", tree->key);
     }
+
+    return OK;
 }
 
 /**
  * 后序遍历红黑树
  *
  * @param[in]  root: the root of the red-black tree
- * @return  none
+ * @return  the operation status, OK is 0, ERROR is -1
  */
-void postorder_rbtree(RBRoot *root) {
-    if (root) postorder(root->node);
+Status postorder_rbtree(RBRoot *root) {
+    if (!root) return ERROR;
+    else postorder(root->node);
+
+    return OK;
 }
