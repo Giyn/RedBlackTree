@@ -1,5 +1,5 @@
 /**
- * @filename rbtree.c
+ * @filename RBTree.c
  * @description RBTree interface implementation
  * @author 许继元
  * @date 2020/12/18
@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "rbtree.h"
+#include "RBTree.h"
 
 #define rb_color(r) ((r)->color)
 #define rb_parent(r) ((r)->parent)
@@ -20,7 +20,7 @@
  * @param[in]  none
  * @return  the root of the red-black tree
  */
-RBRoot *create_rbtree() {
+RBRoot *createRBTree() {
     RBRoot *root = (RBRoot *) malloc(sizeof(RBRoot));
     root->node = NULL;
 
@@ -50,7 +50,7 @@ static Status destroy_binary_tree(RBTree tree) {
  * @param[in]  root  the root of the red-black tree
  * @return  the operation status, OK is 0, ERROR is -1
  */
-Status destroy_rbtree(RBRoot *root) {
+Status destroyRBTree(RBRoot *root) {
     if (!root) return ERROR;
     else destroy_binary_tree(root->node);
 
@@ -83,7 +83,7 @@ static Status preorder(RBTree tree) {
  * @param[in]  root: the root of the red-black tree
  * @return  the operation status, OK is 0, ERROR is -1
  */
-Status preorder_rbtree(RBRoot *root) {
+Status preorderRBTree(RBRoot *root) {
     if (!root) return ERROR;
     else preorder(root->node);
 
@@ -113,7 +113,7 @@ static Status inorder(RBTree tree) {
  * @param[in]  root: the root of the red-black tree
  * @return  the operation status, OK is 0, ERROR is -1
  */
-Status inorder_rbtree(RBRoot *root) {
+Status inorderRBTree(RBRoot *root) {
     if (!root) return ERROR;
     else inorder(root->node);
 
@@ -143,7 +143,7 @@ static Status postorder(RBTree tree) {
  * @param[in]  root: the root of the red-black tree
  * @return  the operation status, OK is 0, ERROR is -1
  */
-Status postorder_rbtree(RBRoot *root) {
+Status postorderRBTree(RBRoot *root) {
     if (!root) return ERROR;
     else postorder(root->node);
 

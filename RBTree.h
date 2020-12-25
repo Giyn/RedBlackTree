@@ -1,12 +1,12 @@
 /**
- * @filename rbtree.h
+ * @filename RBTree.h
  * @description RBTree interface declaration
  * @author 许继元
  * @date 2020/12/18
  */
 
-#ifndef RBTREE_RBTREE_H
-#define RBTREE_RBTREE_H
+#ifndef RBTREE_H
+#define RBTREE_H
 
 #define RED   0 /* 红色结点标志 */
 #define BLACK 1 /* 黑色结点标志 */
@@ -23,28 +23,29 @@ typedef struct RBTreeNode {
 } Node, *RBTree;
 
 /* 红黑树的根结点 */
-typedef struct rb_root {
+typedef struct RB_Root {
     Node *node;
 } RBRoot;
 
+/* 操作状态码 */
 typedef enum {
     OK = 0,
     ERROR = -1
 } Status;
 
 /* 创建红黑树 */
-RBRoot *create_rbtree();
+RBRoot *createRBTree();
 
 /* 销毁红黑树 */
-Status destroy_rbtree(RBRoot *root);
+Status destroyRBTree(RBRoot *root);
 
 /* 前序遍历红黑树 */
-Status preorder_rbtree(RBRoot *root);
+Status preorderRBTree(RBRoot *root);
 
 /* 中序遍历红黑树 */
-Status inorder_rbtree(RBRoot *root);
+Status inorderRBTree(RBRoot *root);
 
 /* 后序遍历红黑树 */
-Status postorder_rbtree(RBRoot *root);
+Status postorderRBTree(RBRoot *root);
 
-#endif /* RBTREE_RBTREE_H */
+#endif /* RBTREE_H */
