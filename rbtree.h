@@ -30,4 +30,7 @@ typedef struct rb_root {
 /* 创建红黑树 */
 RBRoot *create_rbtree();
 
+/* 销毁红黑树 */
+void destroy_rbtree(RBRoot *root);
+
 #endif /* RBTREE_RBTREE_H */
