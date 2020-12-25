@@ -15,11 +15,11 @@
  * @param[in]  tree  the node of the binary tree
  * @return  the operation status, OK is 0, ERROR is -1
  */
-Status destroy_binary_tree(RBTree tree) {
+Status destroyBinaryTree(RBTree tree) {
     if (!tree) return ERROR;
 
-    if (tree->left) destroy_binary_tree(tree->left);
-    if (tree->right) destroy_binary_tree(tree->right);
+    if (tree->left) destroyBinaryTree(tree->left);
+    if (tree->right) destroyBinaryTree(tree->right);
 
     free(tree);
 

@@ -8,7 +8,7 @@
 #ifndef RBTREEUTILS_H
 #define RBTREEUTILS_H
 
-Status destroy_binary_tree(RBTree tree);
+Status destroyBinaryTree(RBTree tree);
 
 Status preorderBiTree(RBTree tree);
 

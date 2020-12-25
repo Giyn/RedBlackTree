@@ -40,7 +40,7 @@ RBRoot *createRBTree() {
  */
 Status destroyRBTree(RBRoot *root) {
     if (!root) return ERROR;
-    else destroy_binary_tree(root->node);
+    else destroyBinaryTree(root->node);
 
     free(root);
 
