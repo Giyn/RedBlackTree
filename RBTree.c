@@ -1,6 +1,6 @@
 /**
  * @filename RBTree.c
- * @description RBTree interface implementation
+ * @description Red-Black Tree interface implementation
  * @author 许继元
  * @date 2020/12/18
  */
@@ -176,4 +176,26 @@ static RBTree search(RBTree tree, RBTreeElemType x) {
  */
 Status searchRBTree(RBRoot *root, RBTreeElemType x) {
     if (root) return search(root->node, x) ? OK : ERROR;
+}
+
+/**
+ * 创建红黑树结点
+ *
+ * @param[in]  x     : the data of the node
+ * @param[in]  parent: its parent node
+ * @param[in]  left  : its left child node
+ * @param[in]  right : its right child node
+ * @return  the new red-black tree node pointer
+ */
+static RBTree createRBTreeNode(RBTreeElemType x, Node *parent, Node *left, Node *right) {
+    RBTree node = (Node *) malloc(sizeof(Node));
+    if (!node) return NULL;
+
+    node->data = x;
+    node->left = left;
+    node->right = right;
+    node->parent = parent;
+    node->color = BLACK;
+
+    return node;
 }

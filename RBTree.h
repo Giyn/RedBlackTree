@@ -1,6 +1,6 @@
 /**
  * @filename RBTree.h
- * @description RBTree interface declaration
+ * @description Red-Black Tree interface declaration
  * @author 许继元
  * @date 2020/12/18
  */
@@ -50,5 +50,8 @@ Status postorderRBTree(RBRoot *root);
 
 /* 递归查找红黑树 */
 Status searchRBTree(RBRoot *root, RBTreeElemType x);
+
+/* 插入结点到红黑树 */
+Status insertRBTree(RBRoot *root, RBTreeElemType key);
 
 #endif /* RBTREE_H */
