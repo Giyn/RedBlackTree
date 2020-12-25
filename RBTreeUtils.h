@@ -1,6 +1,6 @@
 /**
  * @filename RBTreeUtils.h
- * @description Red-Black Tree Utils
+ * @description Red-Black tree utils interface declaration
  * @author 许继元
  * @date 2020/12/18
  */

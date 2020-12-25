@@ -1,6 +1,6 @@
 /**
  * @filename RBTree.c
- * @description Red-Black Tree interface implementation
+ * @description Red-Black tree interface implementation
  * @author 许继元
  * @date 2020/12/18
  */
@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "RBTree.h"
+#include "RBTreeUtils.h"
 
 #define rb_color(r) ((r)->color)
 #define rb_parent(r) ((r)->parent)
