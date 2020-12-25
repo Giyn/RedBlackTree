@@ -8,4 +8,16 @@
 #ifndef RBTREEUTILS_H
 #define RBTREEUTILS_H
 
+Status destroy_binary_tree(RBTree tree);
+
+Status preorderBiTree(RBTree tree);
+
+Status inorderBiTree(RBTree tree);
+
+Status postorderBiTree(RBTree tree);
+
+RBTree searchNode(RBTree tree, RBTreeElemType x);
+
+RBTree createRBTreeNode(RBTreeElemType x, Node *parent, Node *left, Node *right);
+
 #endif /* RBTREEUTILS_H */
