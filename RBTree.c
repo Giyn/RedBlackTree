@@ -66,12 +66,12 @@ Status destroyRBTree(RBRoot *root) {
  * @param[in]  tree: the node of the binary tree
  * @return  the operation status, OK is 0, ERROR is -1
  */
-static Status preorder(RBTree tree) {
+static Status preorderBiTree(RBTree tree) {
     if (!tree) return ERROR;
     else {
-        printf("%d ", tree->key);
-        preorder(tree->left);
-        preorder(tree->right);
+        printf("%d ", tree->data);
+        preorderBiTree(tree->left);
+        preorderBiTree(tree->right);
     }
 
     return OK;
@@ -85,7 +85,7 @@ static Status preorder(RBTree tree) {
  */
 Status preorderRBTree(RBRoot *root) {
     if (!root) return ERROR;
-    else preorder(root->node);
+    else preorderBiTree(root->node);
 
     return OK;
 }
@@ -96,12 +96,12 @@ Status preorderRBTree(RBRoot *root) {
  * @param[in]  tree: the node of the binary tree
  * @return  the operation status, OK is 0, ERROR is -1
  */
-static Status inorder(RBTree tree) {
+static Status inorderBiTree(RBTree tree) {
     if (!tree) return ERROR;
     else {
-        inorder(tree->left);
-        printf("%d ", tree->key);
-        inorder(tree->right);
+        inorderBiTree(tree->left);
+        printf("%d ", tree->data);
+        inorderBiTree(tree->right);
     }
 
     return OK;
@@ -115,7 +115,7 @@ static Status inorder(RBTree tree) {
  */
 Status inorderRBTree(RBRoot *root) {
     if (!root) return ERROR;
-    else inorder(root->node);
+    else inorderBiTree(root->node);
 
     return OK;
 }
@@ -126,12 +126,12 @@ Status inorderRBTree(RBRoot *root) {
  * @param[in]  tree: the node of the binary tree
  * @return  the operation status, OK is 0, ERROR is -1
  */
-static Status postorder(RBTree tree) {
+static Status postorderBiTree(RBTree tree) {
     if (!tree) return ERROR;
     else {
-        postorder(tree->left);
-        postorder(tree->right);
-        printf("%d ", tree->key);
+        postorderBiTree(tree->left);
+        postorderBiTree(tree->right);
+        printf("%d ", tree->data);
     }
 
     return OK;
@@ -145,7 +145,31 @@ static Status postorder(RBTree tree) {
  */
 Status postorderRBTree(RBRoot *root) {
     if (!root) return ERROR;
-    else postorder(root->node);
+    else postorderBiTree(root->node);
 
     return OK;
+}
+
+/**
+ * 递归查找二叉树tree中数据域为x的结点
+ *
+ * @param[in]  tree: the node of the binary tree
+ * @param[in]  x   : the data of the node
+ * @return  the target node
+ */
+static Node *search(RBTree tree, RBTreeElemType x) {
+    if (!tree || tree->data == x) return tree;
+    else if (tree->data > x) return search(tree->left, x);
+    else return search(tree->right, x);
+}
+
+/**
+ * 递归查找红黑树tree中数据域为x的结点
+ *
+ * @param[in]  root: the root of the red-black tree
+ * @param[in]  x   : the data of the node
+ * @return  the operation status, OK is 0, ERROR is -1
+ */
+Status searchRBTree(RBRoot *root, RBTreeElemType x) {
+    if (root) return search(root->node, x) ? OK : ERROR;
 }

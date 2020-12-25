@@ -11,11 +11,11 @@
 #define RED   0 /* 红色结点标志 */
 #define BLACK 1 /* 黑色结点标志 */
 
-typedef int Type;
+typedef int RBTreeElemType;
 
 /* 红黑树的结点 */
 typedef struct RBTreeNode {
-    Type key;                  /* 关键字 */
+    RBTreeElemType data;       /* 数据域 */
     unsigned char color;       /* 颜色 */
     struct RBTreeNode *left;   /* 左孩子 */
     struct RBTreeNode *right;  /* 右孩子 */
@@ -47,5 +47,8 @@ Status inorderRBTree(RBRoot *root);
 
 /* 后序遍历红黑树 */
 Status postorderRBTree(RBRoot *root);
+
+/* 递归查找红黑树 */
+Status searchRBTree(RBRoot *root, RBTreeElemType x);
 
 #endif /* RBTREE_H */
