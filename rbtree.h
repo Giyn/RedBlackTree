@@ -22,9 +22,12 @@ typedef struct RBTreeNode {
     struct RBTreeNode *parent; /* 父结点 */
 } Node, *RBTree;
 
-/* 红黑树的根 */
+/* 红黑树的根结点 */
 typedef struct rb_root {
     Node *node;
 } RBRoot;
+
+/* 创建红黑树 */
+RBRoot *create_rbtree();
 
 #endif /* RBTREE_RBTREE_H */
