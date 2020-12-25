@@ -16,9 +16,9 @@ typedef int RBTreeElemType;
 /* 红黑树的结点 */
 typedef struct RBTreeNode {
     RBTreeElemType data;       /* 数据域 */
-    unsigned char color;       /* 颜色 */
-    struct RBTreeNode *left;   /* 左孩子 */
-    struct RBTreeNode *right;  /* 右孩子 */
+    char color;                /* 颜色 */
+    struct RBTreeNode *left;   /* 左孩子结点 */
+    struct RBTreeNode *right;  /* 右孩子结点 */
     struct RBTreeNode *parent; /* 父结点 */
 } Node, *RBTree;
 
