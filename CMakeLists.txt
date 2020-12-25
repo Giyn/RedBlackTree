@@ -3,4 +3,4 @@ project(RBTree C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(RBTree main.c RBTree.c RBTree.h)
+add_executable(RBTree main.c RBTree.c RBTree.h RBTreeUtils.h)
