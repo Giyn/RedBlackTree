@@ -151,11 +151,11 @@ Status RBTreeLeftRotate(RBRoot *root, Node *node) {
  * 将红黑树的结点node右旋
  *
  * 示例: 对结点1右旋
- *        1                 2
- *      /  \              /  \
- *     2    3    -->     4    1
- *   /  \                   /  \
- *  4    5                 5    3
+ *        1            2
+ *      /  \         /  \
+ *     2    3  -->  4    1
+ *   /  \              /  \
+ *  4    5            5    3
  *
  * @param[in]  root: the root of the red-black tree
  * @param[in]  node: the node of the red-black tree
