@@ -87,3 +87,22 @@ Status postorderRBTree(RBRoot *root) {
 Status searchRBTree(RBRoot *root, RBTreeElemType x) {
     if (root) return searchNode(root->node, x) ? OK : ERROR;
 }
+
+/**
+ * 红黑树插入数据域为x的结点
+ *
+ * @param[in]  root: the root of the red-black tree
+ * @param[in]  x   : the data of the node
+ * @return  the operation status, OK is 0, ERROR is -1
+ */
+Status insertRBTree(RBRoot *root, RBTreeElemType x) {
+    if (searchNode(root->node, x)) return ERROR;
+
+    Node *node;
+    if (!(node = createRBTreeNode(x, NULL, NULL, NULL))) return ERROR;
+
+    insertBinarySearchTree(root, node);
+    RBTreeInsertSelfBalancing(root, node);
+
+    return OK;
+}
