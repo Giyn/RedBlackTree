@@ -38,4 +38,7 @@ Status insertBinarySearchTree(RBRoot *root, Node *node);
 /* 红黑树插入结点后自平衡 */
 Status RBTreeInsertSelfBalancing(RBRoot *root, Node *node);
 
+/* 二叉查找树查找最小结点 */
+RBTree minBinarySearchTreeNode(RBTree tree);
+
 #endif /* RBTREEUTILS_H */

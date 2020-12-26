@@ -284,3 +284,17 @@ Status insertBinarySearchTree(RBRoot *root, Node *node) {
 
     return OK;
 }
+
+/**
+ * 二叉查找树查找最小结点
+ *
+ * @param[in]  tree: the root of the binary search tree
+ * @return  the minimum node of the binary search tree
+ */
+RBTree minBinarySearchTreeNode(RBTree tree) {
+    if (!tree) return NULL;
+
+    while (tree->left) tree = tree->left;
+
+    return tree;
+}
