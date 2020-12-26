@@ -8,7 +8,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "RBTree.h"
-#include "RBTree.c"
 
 /**
  * 销毁二叉树
