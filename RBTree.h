@@ -11,6 +11,15 @@
 #define RED   0 /* 红色结点标志 */
 #define BLACK 1 /* 黑色结点标志 */
 
+#define RBTreeColor(r) ((r)->color)
+#define RBTreeParent(r) ((r)->parent)
+#define RBTreeIsRed(r) ((r)->color == RED)
+#define RBTreeIsBlack(r) ((r)->color == BLACK)
+#define RBTreeSetColor(r, c) do {(r)->color = (c);} while(0)
+#define RBTreeSetParent(r, p) do {(r)->parent = (p);} while(0)
+#define RBTreeSetRed(r) do {(r)->color = RED;} while(0)
+#define RBTreeSetBlack(r) do {(r)->color = BLACK;} while(0)
+
 typedef int RBTreeElemType;
 
 /* 红黑树的结点 */
