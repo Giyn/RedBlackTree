@@ -254,4 +254,35 @@ Status RBTreeInsertSelfBalancing(RBRoot *root, Node *node) {
     }
 
     RBTreeSetBlack(root->node);
+
+    return OK;
+}
+
+/**
+ * 二叉查找树插入结点
+ *
+ * @param[in]  root: the root of the binary search tree
+ * @param[in]  node: the inserted node
+ * @return  the operation status, OK is 0, ERROR is -1
+ */
+Status insertBinarySearchTree(RBRoot *root, Node *node) {
+    Node *p = root->node, *last;
+
+    while (p) {
+        last = p;
+        if (node->data < p->data) p = p->left;
+        else p = p->right;
+    }
+    RBTreeParent(node) = last;
+
+    if (last) {
+        if (node->data < last->data) last->left = node;
+        else last->right = node;
+    } else root->node = node;
+
+    node->color = RED;
+
+    RBTreeInsertSelfBalancing(root, node);
+
+    return OK;
 }
