@@ -300,9 +300,23 @@ RBTree minBinarySearchTreeNode(RBTree tree) {
 }
 
 /**
+ * 二叉查找树查找最大结点
+ *
+ * @param[in]  tree: the root of the binary search tree
+ * @return  the maximum node of the binary search tree
+ */
+RBTree maxBinarySearchTreeNode(RBTree tree) {
+    if (!tree) return NULL;
+
+    while (tree->right) tree = tree->right;
+
+    return tree;
+}
+
+/**
  * 红黑树查找最小结点
  *
- * @param[in]  root  : the root of the binary search tree
+ * @param[in]  root  : the root of the red-black tree
  * @param[in]  minVal: the minimum value of the red-black tree
  * @return  the operation status, OK is 0, ERROR is -1
  */

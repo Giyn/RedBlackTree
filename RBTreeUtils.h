@@ -41,6 +41,9 @@ Status RBTreeInsertSelfBalancing(RBRoot *root, Node *node);
 /* 二叉查找树查找最小结点 */
 RBTree minBinarySearchTreeNode(RBTree tree);
 
+/* 二叉查找树查找最大结点 */
+RBTree maxBinarySearchTreeNode(RBTree tree);
+
 /* 红黑树查找最小结点 */
 Status minRBTreeNode(RBRoot *root, RBTreeElemType *minVal);
 
