@@ -298,3 +298,21 @@ RBTree minBinarySearchTreeNode(RBTree tree) {
 
     return tree;
 }
+
+/**
+ * 红黑树查找最小结点
+ *
+ * @param[in]  root  : the root of the binary search tree
+ * @param[in]  minVal: the minimum value of the red-black tree
+ * @return  the operation status, OK is 0, ERROR is -1
+ */
+Status minRBTreeNode(RBRoot *root, RBTreeElemType *minVal) {
+    Node *node = NULL;
+
+    if (root) node = minBinarySearchTreeNode(root->node);
+    if (!node) return ERROR;
+
+    *minVal = node->data;
+
+    return OK;
+}
