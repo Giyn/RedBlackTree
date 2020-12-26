@@ -99,7 +99,8 @@ Status insertRBTree(RBRoot *root, RBTreeElemType x) {
     if (searchNode(root->node, x)) return ERROR;
 
     Node *node;
-    if (!(node = createRBTreeNode(x, NULL, NULL, NULL))) return ERROR;
+    node = createRBTreeNode(x, NULL, NULL, NULL);
+    if (!node) return ERROR;
 
     insertBinarySearchTree(root, node);
     RBTreeInsertSelfBalancing(root, node);
