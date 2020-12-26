@@ -32,7 +32,7 @@ Status RBTreeLeftRotate(RBRoot *root, Node *node);
 /* 红黑树结点右旋 */
 Status RBTreeRightRotate(RBRoot *root, Node *node);
 
-/* 红黑树插入后自平衡 */
+/* 红黑树插入结点后自平衡 */
 Status RBTreeInsertSelfBalancing(RBRoot *root, Node *node);
 
 #endif /* RBTREEUTILS_H */
