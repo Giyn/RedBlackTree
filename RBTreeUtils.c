@@ -265,7 +265,8 @@ Status RBTreeInsertSelfBalancing(RBRoot *root, Node *node) {
  * @return  the operation status, OK is 0, ERROR is -1
  */
 Status insertBinarySearchTree(RBRoot *root, Node *node) {
-    Node *p = root->node, *last;
+    Node *p = root->node;
+    Node *last = NULL;
 
     while (p) {
         last = p;
