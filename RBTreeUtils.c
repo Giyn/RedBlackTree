@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "RBTree.h"
+#include "RBTree.c"
 
 /**
  * 销毁二叉树
@@ -178,4 +179,79 @@ Status RBTreeRightRotate(RBRoot *root, Node *node) {
 
     p->right = node;
     node->parent = p;
+}
+
+/**
+ * 红黑树插入后自平衡
+ *
+ * @param[in]  root: the root of the red-black tree
+ * @param[in]  node: the inserted node
+ * @return  the operation status, OK is 0, ERROR is -1
+ */
+Status RBTreeInsertSelfBalancing(RBRoot *root, Node *node) {
+    Node *parent, *grandparent;
+
+    /* 父结点为红色结点 */
+    while ((parent = RBTreeParent(node)) && RBTreeIsRed(parent)) {
+        grandparent = RBTreeParent(parent);
+
+        /* 父结点是祖父结点的左孩子结点” */
+        if (parent == grandparent->left) {
+            Node *uncle = grandparent->right;
+
+            /* 叔叔结点是红色结点 */
+            if (uncle && RBTreeIsRed(uncle)) {
+                RBTreeSetBlack(parent);
+                RBTreeSetBlack(uncle);
+                RBTreeSetRed(grandparent);
+                node = grandparent;
+                continue;
+            }
+
+            /* 叔叔结点不存在, 且插入结点是其父结点的左孩子结点 */
+            if (node == parent->left) {
+                RBTreeSetBlack(parent);
+                RBTreeSetRed(grandparent);
+                RBTreeRightRotate(root, grandparent);
+            }
+
+            /* 叔叔结点不存在, 且插入结点是其父结点的右孩子结点 */
+            if (node == parent->right) {
+                Node *temp;
+                RBTreeLeftRotate(root, parent);
+                temp = parent;
+                parent = node;
+                node = temp;
+            }
+        } else { /* 父结点是祖父结点的右孩子结点” */
+            Node *uncle = grandparent->left;
+
+            /* 叔叔结点是红色结点 */
+            if (uncle && RBTreeIsRed(uncle)) {
+                RBTreeSetBlack(uncle);
+                RBTreeSetBlack(parent);
+                RBTreeSetRed(grandparent);
+                node = grandparent;
+                continue;
+            }
+
+            /* 叔叔结点不存在, 且插入结点是其父结点的右孩子结点 */
+            if (node == parent->right) {
+                RBTreeSetBlack(parent);
+                RBTreeSetRed(grandparent);
+                RBTreeLeftRotate(root, grandparent);
+            }
+
+            /* 叔叔结点不存在, 且插入结点是其父结点的左孩子结点 */
+            if (node == parent->left) {
+                Node *temp;
+                RBTreeRightRotate(root, parent);
+                temp = parent;
+                parent = node;
+                node = temp;
+            }
+        }
+    }
+
+    RBTreeSetBlack(root->node);
 }
