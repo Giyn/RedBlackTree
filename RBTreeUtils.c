@@ -330,3 +330,21 @@ Status minRBTreeNode(RBRoot *root, RBTreeElemType *minVal) {
 
     return OK;
 }
+
+/**
+ * 红黑树查找最大结点
+ *
+ * @param[in]  root  : the root of the red-black tree
+ * @param[in]  maxVal: the maximum value of the red-black tree
+ * @return  the operation status, OK is 0, ERROR is -1
+ */
+Status maxRBTreeNode(RBRoot *root, RBTreeElemType *maxVal) {
+    Node *node = NULL;
+
+    if (root) node = maxBinarySearchTreeNode(root->node);
+    if (!node) return ERROR;
+
+    *maxVal = node->data;
+
+    return OK;
+}

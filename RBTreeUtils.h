@@ -47,4 +47,7 @@ RBTree maxBinarySearchTreeNode(RBTree tree);
 /* 红黑树查找最小结点 */
 Status minRBTreeNode(RBRoot *root, RBTreeElemType *minVal);
 
+/* 红黑树查找最大结点 */
+Status maxRBTreeNode(RBRoot *root, RBTreeElemType *maxVal);
+
 #endif /* RBTREEUTILS_H */
