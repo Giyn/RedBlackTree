@@ -282,7 +282,5 @@ Status insertBinarySearchTree(RBRoot *root, Node *node) {
 
     node->color = RED;
 
-    RBTreeInsertSelfBalancing(root, node);
-
     return OK;
 }
