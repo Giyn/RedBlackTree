@@ -58,7 +58,7 @@ Status inorderRBTree(RBRoot *root);
 Status postorderRBTree(RBRoot *root);
 
 /* 递归查找红黑树 */
-Status searchRBTree(RBRoot *root, RBTreeElemType x);
+Status recursiveSearchRBTree(RBRoot *root, RBTreeElemType x);
 
 /* 红黑树插入结点 */
 Status insertRBTree(RBRoot *root, RBTreeElemType x);

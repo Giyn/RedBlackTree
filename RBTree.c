@@ -84,7 +84,7 @@ Status postorderRBTree(RBRoot *root) {
  * @param[in]  x   : the data of the node
  * @return  the operation status, OK is 0, ERROR is -1
  */
-Status searchRBTree(RBRoot *root, RBTreeElemType x) {
+Status recursiveSearchRBTree(RBRoot *root, RBTreeElemType x) {
     if (root) return searchNode(root->node, x) ? OK : ERROR;
 }
 
