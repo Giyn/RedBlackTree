@@ -458,4 +458,6 @@ Status RBTreeDeleteSelfBalancing(RBRoot *root, Node *node, Node *parent) {
         }
     }
     if (node) RBTreeSetBlack(node);
+
+    return OK;
 }
