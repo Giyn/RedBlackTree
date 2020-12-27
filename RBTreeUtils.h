@@ -50,4 +50,7 @@ Status minRBTreeNode(RBRoot *root, RBTreeElemType *minVal);
 /* 红黑树查找最大结点 */
 Status maxRBTreeNode(RBRoot *root, RBTreeElemType *maxVal);
 
+/* 二叉查找树查找前驱结点 */
+RBTree BSTreePrecursor(RBTree node);
+
 #endif /* RBTREEUTILS_H */

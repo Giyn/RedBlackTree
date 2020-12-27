@@ -344,3 +344,21 @@ Status maxRBTreeNode(RBRoot *root, RBTreeElemType *maxVal) {
 
     return OK;
 }
+
+/**
+ * 二叉查找树查找结点node的前驱结点
+ *
+ * @param[in]  node: the node to be found its precursor
+ * @return  the target precursor node
+ */
+RBTree BSTreePrecursor(RBTree node) {
+    if (node->left) return maxBinarySearchTreeNode(node->left);
+
+    Node *p = node->parent;
+    while (p && (node == p->left)) {
+        node = p;
+        p = p->parent;
+    }
+
+    return p;
+}
