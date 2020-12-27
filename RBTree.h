@@ -19,6 +19,7 @@
 #define RBTreeSetParent(r, p) do {(r)->parent = (p);} while(0)
 #define RBTreeSetRed(r) do {(r)->color = RED;} while(0)
 #define RBTreeSetBlack(r) do {(r)->color = BLACK;} while(0)
+#define LEN(a) ((sizeof(a)) / (sizeof(a[0])))
 
 typedef int RBTreeElemType;
 
