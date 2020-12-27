@@ -128,11 +128,9 @@ RBTree createRBTreeNode(RBTreeElemType x, Node *parent, Node *left, Node *right)
  */
 Status RBTreeLeftRotate(RBRoot *root, Node *node) {
     Node *p = node->right;
+    node->right = p->left;
 
-    if (p->left) {
-        node->right = p->left;
-        p->left->parent = node;
-    } else node->right = NULL;
+    if (p->left) p->left->parent = node;
 
     p->parent = node->parent;
 
@@ -162,11 +160,9 @@ Status RBTreeLeftRotate(RBRoot *root, Node *node) {
  */
 Status RBTreeRightRotate(RBRoot *root, Node *node) {
     Node *p = node->left;
+    node->left = p->right;
 
-    if (p->right) {
-        node->left = p->right;
-        p->right->parent = node;
-    } else node->right = NULL;
+    if (p->right) p->right->parent = node;
 
     p->parent = node->parent;
 
