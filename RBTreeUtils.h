@@ -56,4 +56,7 @@ RBTree BSTreePrecursor(RBTree node);
 /* 二叉查找树查找后继结点 */
 RBTree BSTreeSuccessor(RBTree node);
 
+/* 红黑树删除结点后自平衡 */
+Status RBTreeDeleteSelfBalancing(RBRoot *root, Node *node, Node *parent);
+
 #endif /* RBTREEUTILS_H */
