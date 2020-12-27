@@ -177,7 +177,7 @@ Status RBTreeRightRotate(RBRoot *root, Node *node) {
 }
 
 /**
- * 红黑树插入后自平衡
+ * 红黑树插入结点后自平衡
  *
  * @param[in]  root: the root of the red-black tree
  * @param[in]  node: the inserted node
@@ -371,7 +371,7 @@ RBTree BSTreePrecursor(RBTree node) {
  */
 RBTree BSTreeSuccessor(RBTree node) {
     if (node->right) return minBinarySearchTreeNode(node->right);
-    
+
     Node *p = node->parent;
     while (p && (node == p->right)) {
         node = p;
@@ -379,4 +379,83 @@ RBTree BSTreeSuccessor(RBTree node) {
     }
 
     return p;
+}
+
+/**
+ * 红黑树删除结点后自平衡
+ *
+ * @param[in]  root  : the root of the red-black tree
+ * @param[in]  node  : the deleted node
+ * @param[in]  parent: the deleted node
+ * @return  the operation status, OK is 0, ERROR is -1
+ */
+Status RBTreeDeleteSelfBalancing(RBRoot *root, Node *node, Node *parent) {
+    Node *sibling = NULL;
+
+    while ((!node || RBTreeIsBlack(node)) && node != root->node) {
+        if (node == parent->left) {
+            sibling = parent->right;
+            /* node的兄弟结点sibling是红色结点 */
+            if (RBTreeIsRed(sibling)) {
+                RBTreeSetBlack(sibling);
+                RBTreeSetRed(parent);
+                RBTreeLeftRotate(root, parent);
+                sibling = parent->right;
+            }
+            /* node的兄弟结点sibling是黑色结点, sibling的2个孩子结点都是黑色结点 */
+            if ((!sibling->left || RBTreeIsBlack(sibling->left)) &&
+                (!sibling->right || RBTreeIsBlack(sibling->right))) {
+                RBTreeSetRed(sibling);
+                node = parent;
+                parent = RBTreeParent(node);
+            } else {
+                /* node的兄弟结点sibling是黑色结点, sibling的左孩子是红色, 右孩子是黑色 */
+                if (!sibling->right || RBTreeIsBlack(sibling->right)) {
+                    RBTreeSetRed(sibling);
+                    RBTreeSetBlack(sibling->left);
+                    RBTreeRightRotate(root, sibling);
+                    sibling = parent->right;
+                }
+                /* node的兄弟结点sibling是黑色结点, sibling的左孩子是任意颜色, 右孩子是红色 */
+                RBTreeSetColor(sibling, RBTreeColor(parent));
+                RBTreeSetBlack(parent);
+                RBTreeSetBlack(sibling->right);
+                RBTreeLeftRotate(root, parent);
+                node = root->node;
+                break;
+            }
+        } else {
+            sibling = parent->left;
+            /* node的兄弟结点sibling是红色结点 */
+            if (RBTreeIsRed(sibling)) {
+                RBTreeSetBlack(sibling);
+                RBTreeSetRed(parent);
+                RBTreeRightRotate(root, parent);
+                sibling = parent->left;
+            }
+            /* node的兄弟结点sibling是黑色结点, sibling的2个孩子结点都是黑色结点 */
+            if ((!sibling->left || RBTreeIsBlack(sibling->left)) &&
+                (!sibling->right || RBTreeIsBlack(sibling->right))) {
+                RBTreeSetRed(sibling);
+                node = parent;
+                parent = RBTreeParent(node);
+            } else {
+                /* node的兄弟结点sibling是黑色结点, sibling的左孩子是红色, 右孩子是黑色 */
+                if (!sibling->left || RBTreeIsBlack(sibling->left)) {
+                    RBTreeSetBlack(sibling->right);
+                    RBTreeSetRed(sibling);
+                    RBTreeLeftRotate(root, sibling);
+                    sibling = parent->left;
+                }
+                /* node的兄弟结点sibling是黑色结点, sibling的左孩子是任意颜色, 右孩子是红色 */
+                RBTreeSetColor(sibling, RBTreeColor(parent));
+                RBTreeSetBlack(parent);
+                RBTreeSetBlack(sibling->left);
+                RBTreeRightRotate(root, parent);
+                node = root->node;
+                break;
+            }
+        }
+    }
+    if (node) RBTreeSetBlack(node);
 }
