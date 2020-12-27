@@ -362,3 +362,21 @@ RBTree BSTreePrecursor(RBTree node) {
 
     return p;
 }
+
+/**
+ * 二叉查找树查找结点node的后继结点
+ *
+ * @param[in]  node: the node to be found its successor
+ * @return  the target successor node
+ */
+RBTree BSTreeSuccessor(RBTree node) {
+    if (node->right) return minBinarySearchTreeNode(node->right);
+    
+    Node *p = node->parent;
+    while (p && (node == p->right)) {
+        node = p;
+        p = p->parent;
+    }
+
+    return p;
+}

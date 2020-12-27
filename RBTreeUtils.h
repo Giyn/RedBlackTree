@@ -53,4 +53,7 @@ Status maxRBTreeNode(RBRoot *root, RBTreeElemType *maxVal);
 /* 二叉查找树查找前驱结点 */
 RBTree BSTreePrecursor(RBTree node);
 
+/* 二叉查找树查找后继结点 */
+RBTree BSTreeSuccessor(RBTree node);
+
 #endif /* RBTREEUTILS_H */
