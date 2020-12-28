@@ -138,6 +138,7 @@ _Noreturn void menu(RBRoot *root) {
                 printf("再见!");
                 exit(0);
             default:
+                printf("不存在该选项, 请重新输入!\n");
                 break;
         }
         system("pause");
@@ -171,8 +172,8 @@ int InputInteger() {
             }
         }
         if (status == FALSE) {
-            printf("输入非法, 请重新输入!\n");
-            break;
+            printf("输入非法, 请重新输入:");
+            continue;
         } else {
             /* Convert string to number */
             for (i = 0, integer = 0; str[i] != '\0'; i++) {
