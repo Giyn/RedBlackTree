@@ -127,5 +127,10 @@ Status insertRBTree(RBRoot *root, RBTreeElemType x)
 Status deleteRBTree(RBRoot *root, RBTreeElemType x)
 {
     Node *p;
-    if (p = recursiveSearchNode(root->node, x)) deleteRBTreeNode(root, p);
+    if (p = recursiveSearchNode(root->node, x)) {
+        deleteRBTreeNode(root, p);
+        return OK;
+    }
+
+    return ERROR;
 }
