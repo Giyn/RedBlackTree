@@ -1,7 +1,7 @@
 /**
  * @filename RedBlackTreeUtils.c
  * @description Red-Black tree utils interface implementation
- * @author è®¸ç»§å…ƒ
+ * @author Ğí¼ÌÔª
  * @date 2020/12/18
  */
 
@@ -12,7 +12,7 @@
 #include "BalancedBinaryTree.h"
 
 /**
- * åˆ›å»ºçº¢é»‘æ ‘ç»“ç‚¹
+ * ´´½¨ºìºÚÊ÷½áµã
  *
  * @param[in]  x     : the data of the node
  * @param[in]  parent: its parent node
@@ -35,7 +35,7 @@ RBTree createRBTreeNode(RBTreeElemType x, Node *parent, Node *left, Node *right)
 }
 
 /**
- * çº¢é»‘æ ‘æ’å…¥ç»“ç‚¹åè‡ªå¹³è¡¡
+ * ºìºÚÊ÷²åÈë½áµãºó×ÔÆ½ºâ
  *
  * @param[in]  root: the root of the red-black tree
  * @param[in]  node: the inserted node
@@ -45,15 +45,15 @@ Status RBTreeInsertSelfBalancing(RBRoot *root, Node *node)
 {
     Node *parent, *grandparent;
 
-    /* çˆ¶ç»“ç‚¹ä¸ºçº¢è‰²ç»“ç‚¹ */
+    /* ¸¸½áµãÎªºìÉ«½áµã */
     while ((parent = RBTreeParent(node)) && RBTreeIsRed(parent)) {
         grandparent = RBTreeParent(parent);
 
-        /* çˆ¶ç»“ç‚¹æ˜¯ç¥–çˆ¶ç»“ç‚¹çš„å·¦å­©å­ç»“ç‚¹â€ */
+        /* ¸¸½áµãÊÇ×æ¸¸½áµãµÄ×óº¢×Ó½áµã¡± */
         if (parent == grandparent->left) {
             Node *uncle = grandparent->right;
 
-            /* å”å”ç»“ç‚¹æ˜¯çº¢è‰²ç»“ç‚¹ */
+            /* ÊåÊå½áµãÊÇºìÉ«½áµã */
             if (uncle && RBTreeIsRed(uncle)) {
                 RBTreeSetBlack(parent);
                 RBTreeSetBlack(uncle);
@@ -62,14 +62,14 @@ Status RBTreeInsertSelfBalancing(RBRoot *root, Node *node)
                 continue;
             }
 
-            /* å”å”ç»“ç‚¹ä¸å­˜åœ¨, ä¸”æ’å…¥ç»“ç‚¹æ˜¯å…¶çˆ¶ç»“ç‚¹çš„å·¦å­©å­ç»“ç‚¹ */
+            /* ÊåÊå½áµã²»´æÔÚ, ÇÒ²åÈë½áµãÊÇÆä¸¸½áµãµÄ×óº¢×Ó½áµã */
             if (node == parent->left) {
                 RBTreeSetBlack(parent);
                 RBTreeSetRed(grandparent);
                 RBTreeRightRotate(root, grandparent);
             }
 
-            /* å”å”ç»“ç‚¹ä¸å­˜åœ¨, ä¸”æ’å…¥ç»“ç‚¹æ˜¯å…¶çˆ¶ç»“ç‚¹çš„å³å­©å­ç»“ç‚¹ */
+            /* ÊåÊå½áµã²»´æÔÚ, ÇÒ²åÈë½áµãÊÇÆä¸¸½áµãµÄÓÒº¢×Ó½áµã */
             if (node == parent->right) {
                 Node *temp;
                 RBTreeLeftRotate(root, parent);
@@ -77,10 +77,10 @@ Status RBTreeInsertSelfBalancing(RBRoot *root, Node *node)
                 parent = node;
                 node = temp;
             }
-        } else { /* çˆ¶ç»“ç‚¹æ˜¯ç¥–çˆ¶ç»“ç‚¹çš„å³å­©å­ç»“ç‚¹â€ */
+        } else { /* ¸¸½áµãÊÇ×æ¸¸½áµãµÄÓÒº¢×Ó½áµã¡± */
             Node *uncle = grandparent->left;
 
-            /* å”å”ç»“ç‚¹æ˜¯çº¢è‰²ç»“ç‚¹ */
+            /* ÊåÊå½áµãÊÇºìÉ«½áµã */
             if (uncle && RBTreeIsRed(uncle)) {
                 RBTreeSetBlack(uncle);
                 RBTreeSetBlack(parent);
@@ -89,14 +89,14 @@ Status RBTreeInsertSelfBalancing(RBRoot *root, Node *node)
                 continue;
             }
 
-            /* å”å”ç»“ç‚¹ä¸å­˜åœ¨, ä¸”æ’å…¥ç»“ç‚¹æ˜¯å…¶çˆ¶ç»“ç‚¹çš„å³å­©å­ç»“ç‚¹ */
+            /* ÊåÊå½áµã²»´æÔÚ, ÇÒ²åÈë½áµãÊÇÆä¸¸½áµãµÄÓÒº¢×Ó½áµã */
             if (node == parent->right) {
                 RBTreeSetBlack(parent);
                 RBTreeSetRed(grandparent);
                 RBTreeLeftRotate(root, grandparent);
             }
 
-            /* å”å”ç»“ç‚¹ä¸å­˜åœ¨, ä¸”æ’å…¥ç»“ç‚¹æ˜¯å…¶çˆ¶ç»“ç‚¹çš„å·¦å­©å­ç»“ç‚¹ */
+            /* ÊåÊå½áµã²»´æÔÚ, ÇÒ²åÈë½áµãÊÇÆä¸¸½áµãµÄ×óº¢×Ó½áµã */
             if (node == parent->left) {
                 Node *temp;
                 RBTreeRightRotate(root, parent);
@@ -113,7 +113,7 @@ Status RBTreeInsertSelfBalancing(RBRoot *root, Node *node)
 }
 
 /**
- * çº¢é»‘æ ‘æŸ¥æ‰¾æœ€å°ç»“ç‚¹
+ * ºìºÚÊ÷²éÕÒ×îĞ¡½áµã
  *
  * @param[in]  root  : the root of the red-black tree
  * @param[in]  minVal: the minimum value of the red-black tree
@@ -132,7 +132,7 @@ Status minRBTreeNode(RBRoot *root, RBTreeElemType *minVal)
 }
 
 /**
- * çº¢é»‘æ ‘æŸ¥æ‰¾æœ€å¤§ç»“ç‚¹
+ * ºìºÚÊ÷²éÕÒ×î´ó½áµã
  *
  * @param[in]  root  : the root of the red-black tree
  * @param[in]  maxVal: the maximum value of the red-black tree
@@ -151,7 +151,7 @@ Status maxRBTreeNode(RBRoot *root, RBTreeElemType *maxVal)
 }
 
 /**
- * çº¢é»‘æ ‘åˆ é™¤ç»“ç‚¹åè‡ªå¹³è¡¡
+ * ºìºÚÊ÷É¾³ı½áµãºó×ÔÆ½ºâ
  *
  * @param[in]  root  : the root of the red-black tree
  * @param[in]  node  : the deleted node
@@ -165,28 +165,28 @@ Status RBTreeDeleteSelfBalancing(RBRoot *root, Node *node, Node *parent)
     while ((!node || RBTreeIsBlack(node)) && node != root->node) {
         if (node == parent->left) {
             sibling = parent->right;
-            /* nodeçš„å…„å¼Ÿç»“ç‚¹siblingæ˜¯çº¢è‰²ç»“ç‚¹ */
+            /* nodeµÄĞÖµÜ½áµãsiblingÊÇºìÉ«½áµã */
             if (RBTreeIsRed(sibling)) {
                 RBTreeSetBlack(sibling);
                 RBTreeSetRed(parent);
                 RBTreeLeftRotate(root, parent);
                 sibling = parent->right;
             }
-            /* nodeçš„å…„å¼Ÿç»“ç‚¹siblingæ˜¯é»‘è‰²ç»“ç‚¹, siblingçš„2ä¸ªå­©å­ç»“ç‚¹éƒ½æ˜¯é»‘è‰²ç»“ç‚¹ */
+            /* nodeµÄĞÖµÜ½áµãsiblingÊÇºÚÉ«½áµã, siblingµÄ2¸öº¢×Ó½áµã¶¼ÊÇºÚÉ«½áµã */
             if ((!sibling->left || RBTreeIsBlack(sibling->left)) &&
                 (!sibling->right || RBTreeIsBlack(sibling->right))) {
                 RBTreeSetRed(sibling);
                 node = parent;
                 parent = RBTreeParent(node);
             } else {
-                /* nodeçš„å…„å¼Ÿç»“ç‚¹siblingæ˜¯é»‘è‰²ç»“ç‚¹, siblingçš„å·¦å­©å­æ˜¯çº¢è‰², å³å­©å­æ˜¯é»‘è‰² */
+                /* nodeµÄĞÖµÜ½áµãsiblingÊÇºÚÉ«½áµã, siblingµÄ×óº¢×ÓÊÇºìÉ«, ÓÒº¢×ÓÊÇºÚÉ« */
                 if (!sibling->right || RBTreeIsBlack(sibling->right)) {
                     RBTreeSetRed(sibling);
                     RBTreeSetBlack(sibling->left);
                     RBTreeRightRotate(root, sibling);
                     sibling = parent->right;
                 }
-                /* nodeçš„å…„å¼Ÿç»“ç‚¹siblingæ˜¯é»‘è‰²ç»“ç‚¹, siblingçš„å·¦å­©å­æ˜¯ä»»æ„é¢œè‰², å³å­©å­æ˜¯çº¢è‰² */
+                /* nodeµÄĞÖµÜ½áµãsiblingÊÇºÚÉ«½áµã, siblingµÄ×óº¢×ÓÊÇÈÎÒâÑÕÉ«, ÓÒº¢×ÓÊÇºìÉ« */
                 RBTreeSetColor(sibling, RBTreeColor(parent));
                 RBTreeSetBlack(parent);
                 RBTreeSetBlack(sibling->right);
@@ -196,28 +196,28 @@ Status RBTreeDeleteSelfBalancing(RBRoot *root, Node *node, Node *parent)
             }
         } else {
             sibling = parent->left;
-            /* nodeçš„å…„å¼Ÿç»“ç‚¹siblingæ˜¯çº¢è‰²ç»“ç‚¹ */
+            /* nodeµÄĞÖµÜ½áµãsiblingÊÇºìÉ«½áµã */
             if (RBTreeIsRed(sibling)) {
                 RBTreeSetBlack(sibling);
                 RBTreeSetRed(parent);
                 RBTreeRightRotate(root, parent);
                 sibling = parent->left;
             }
-            /* nodeçš„å…„å¼Ÿç»“ç‚¹siblingæ˜¯é»‘è‰²ç»“ç‚¹, siblingçš„2ä¸ªå­©å­ç»“ç‚¹éƒ½æ˜¯é»‘è‰²ç»“ç‚¹ */
+            /* nodeµÄĞÖµÜ½áµãsiblingÊÇºÚÉ«½áµã, siblingµÄ2¸öº¢×Ó½áµã¶¼ÊÇºÚÉ«½áµã */
             if ((!sibling->left || RBTreeIsBlack(sibling->left)) &&
                 (!sibling->right || RBTreeIsBlack(sibling->right))) {
                 RBTreeSetRed(sibling);
                 node = parent;
                 parent = RBTreeParent(node);
             } else {
-                /* nodeçš„å…„å¼Ÿç»“ç‚¹siblingæ˜¯é»‘è‰²ç»“ç‚¹, siblingçš„å·¦å­©å­æ˜¯çº¢è‰², å³å­©å­æ˜¯é»‘è‰² */
+                /* nodeµÄĞÖµÜ½áµãsiblingÊÇºÚÉ«½áµã, siblingµÄ×óº¢×ÓÊÇºìÉ«, ÓÒº¢×ÓÊÇºÚÉ« */
                 if (!sibling->left || RBTreeIsBlack(sibling->left)) {
                     RBTreeSetBlack(sibling->right);
                     RBTreeSetRed(sibling);
                     RBTreeLeftRotate(root, sibling);
                     sibling = parent->left;
                 }
-                /* nodeçš„å…„å¼Ÿç»“ç‚¹siblingæ˜¯é»‘è‰²ç»“ç‚¹, siblingçš„å·¦å­©å­æ˜¯ä»»æ„é¢œè‰², å³å­©å­æ˜¯çº¢è‰² */
+                /* nodeµÄĞÖµÜ½áµãsiblingÊÇºÚÉ«½áµã, siblingµÄ×óº¢×ÓÊÇÈÎÒâÑÕÉ«, ÓÒº¢×ÓÊÇºìÉ« */
                 RBTreeSetColor(sibling, RBTreeColor(parent));
                 RBTreeSetBlack(parent);
                 RBTreeSetBlack(sibling->left);
@@ -233,7 +233,7 @@ Status RBTreeDeleteSelfBalancing(RBRoot *root, Node *node, Node *parent)
 }
 
 /**
- * çº¢é»‘æ ‘åˆ é™¤ç»“ç‚¹æŒ‡é’ˆ
+ * ºìºÚÊ÷É¾³ı½áµãÖ¸Õë
  *
  * @param[in]  root: the root of the red-black tree
  * @param[in]  node: the deleted node
@@ -244,58 +244,58 @@ Status deleteRBTreeNode(RBRoot *root, Node *node)
     Node *child = NULL, *parent = NULL;
     int color;
 
-    /* åˆ é™¤ç»“ç‚¹çš„å·¦å³å­©å­ç»“ç‚¹éƒ½å­˜åœ¨ */
+    /* É¾³ı½áµãµÄ×óÓÒº¢×Ó½áµã¶¼´æÔÚ */
     if (node->left && node->right) {
         Node *replace = node;
-        /* æ›¿ä»£ç»“ç‚¹, å³åç»§ç»“ç‚¹ */
+        /* Ìæ´ú½áµã, ¼´ºó¼Ì½áµã */
         replace = replace->right;
-        /* è·å–æœ€å°çš„åç»§ç»“ç‚¹ */
+        /* »ñÈ¡×îĞ¡µÄºó¼Ì½áµã */
         while (replace->left) replace = replace->left;
 
-        /* nodeç»“ç‚¹ä¸æ˜¯æ ¹ç»“ç‚¹ */
+        /* node½áµã²»ÊÇ¸ù½áµã */
         if (RBTreeParent(node)) {
             if (node == RBTreeParent(node)->left) RBTreeParent(node)->left = replace;
             else RBTreeParent(node)->right = replace;
-        } else root->node = replace;  /* nodeç»“ç‚¹æ˜¯æ ¹ç»“ç‚¹ */
+        } else root->node = replace;  /* node½áµãÊÇ¸ù½áµã */
 
-        /* childæ˜¯æ›¿ä»£ç»“ç‚¹çš„å³å­©å­, å¯èƒ½éœ€è¦å¡«è¡¥æ›¿ä»£ç»“ç‚¹çš„ä½ç½® */
+        /* childÊÇÌæ´ú½áµãµÄÓÒº¢×Ó, ¿ÉÄÜĞèÒªÌî²¹Ìæ´ú½áµãµÄÎ»ÖÃ */
         child = replace->right;
-        /* ä¿å­˜æ›¿ä»£ç»“ç‚¹çš„çˆ¶ç»“ç‚¹ */
+        /* ±£´æÌæ´ú½áµãµÄ¸¸½áµã */
         parent = RBTreeParent(replace);
-        /* ä¿å­˜æ›¿ä»£ç»“ç‚¹çš„é¢œè‰² */
+        /* ±£´æÌæ´ú½áµãµÄÑÕÉ« */
         color = RBTreeColor(replace);
 
-        /* æ›¿ä»£ç»“ç‚¹æ˜¯åˆ é™¤ç»“ç‚¹çš„å³å­©å­ç»“ç‚¹ */
+        /* Ìæ´ú½áµãÊÇÉ¾³ı½áµãµÄÓÒº¢×Ó½áµã */
         if (parent == node) parent = replace;
         else {
             if (child) RBTreeSetParent(child, parent);
-            /* æ›¿ä»£ç»“ç‚¹çš„å³å­©å­ç»“ç‚¹å¡«è¡¥æ›¿ä»£ç»“ç‚¹çš„ä½ç½®(æ›¿ä»£ç»“ç‚¹ä¸å¯èƒ½æœ‰å·¦å­©å­ç»“ç‚¹, å¦åˆ™å…¶æ‰æ˜¯åç»§ç»“ç‚¹) */
+            /* Ìæ´ú½áµãµÄÓÒº¢×Ó½áµãÌî²¹Ìæ´ú½áµãµÄÎ»ÖÃ(Ìæ´ú½áµã²»¿ÉÄÜÓĞ×óº¢×Ó½áµã, ·ñÔòÆä²ÅÊÇºó¼Ì½áµã) */
             parent->left = child;
             replace->right = node->right;
             RBTreeSetParent(node->right, replace);
         }
 
-        /* æ›¿ä»£ç»“ç‚¹æ“ä½œ */
+        /* Ìæ´ú½áµã²Ù×÷ */
         replace->parent = node->parent;
         replace->color = node->color;
         replace->left = node->left;
         node->left->parent = replace;
 
-        /* æ›¿ä»£ç»“ç‚¹ä¸ºé»‘è‰², éœ€è¦è‡ªå¹³è¡¡ */
+        /* Ìæ´ú½áµãÎªºÚÉ«, ĞèÒª×ÔÆ½ºâ */
         if (color == BLACK) RBTreeDeleteSelfBalancing(root, child, parent);
         free(node);
 
         return OK;
     }
 
-    /* åˆ é™¤ç»“ç‚¹åªå­˜åœ¨ä¸€ä¸ªå­©å­ç»“ç‚¹æˆ–è€…æ²¡æœ‰å­©å­ç»“ç‚¹ */
+    /* É¾³ı½áµãÖ»´æÔÚÒ»¸öº¢×Ó½áµã»òÕßÃ»ÓĞº¢×Ó½áµã */
     if (node->left) child = node->left;
     else child = node->right;
     parent = node->parent;
     color = node->color;
     if (child) child->parent = parent;
 
-    /* nodeç»“ç‚¹ä¸æ˜¯æ ¹ç»“ç‚¹ */
+    /* node½áµã²»ÊÇ¸ù½áµã */
     if (parent) {
         if (node == parent->left) parent->left = child;
         else parent->right = child;
@@ -308,7 +308,7 @@ Status deleteRBTreeNode(RBRoot *root, Node *node)
 }
 
 /**
- * çº¢é»‘æ ‘ä¿¡æ¯çš„æ‰“å°
+ * ºìºÚÊ÷ĞÅÏ¢µÄ´òÓ¡
  *
  * @param[in]  tree    : the node of the red-black tree
  * @param[in]  data    : the data of the node
@@ -320,9 +320,9 @@ Status deleteRBTreeNode(RBRoot *root, Node *node)
 Status PrintRBTreeInfo(RBTree tree, RBTreeElemType data, int position)
 {
     if (tree) {
-        if (position == 0) printf("[%d](BLACK)æ˜¯æ ¹èŠ‚ç‚¹\n", tree->data);
-        else printf("[%d](%s)æ˜¯[%d]çš„%så­©å­ç»“ç‚¹\n", tree->data, RBTreeIsRed(tree) ? "RED" : "BLACK",
-                    data, position == -1 ? "å·¦" : "å³");
+        if (position == 0) printf("[%d](BLACK)ÊÇ¸ù½Úµã\n", tree->data);
+        else printf("[%d](%s)ÊÇ[%d]µÄ%sº¢×Ó½áµã\n", tree->data, RBTreeIsRed(tree) ? "RED" : "BLACK",
+                    data, position == -1 ? "×ó" : "ÓÒ");
 
         PrintRBTreeInfo(tree->left, tree->data, -1);
         PrintRBTreeInfo(tree->right, tree->data, 1);
