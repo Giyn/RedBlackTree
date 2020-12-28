@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include "RedBlackTree.h"
 #include "RedBlackTreeUtils.h"
+#include "BinarySearchTree.h"
 #include "BinaryTree.h"
 
 /**
