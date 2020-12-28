@@ -76,8 +76,8 @@ _Noreturn void menu(RBRoot *root) {
                 if (exist_flag) {
                     printf("请输入你想删除的结点:");
                     delete_x = InputInteger();
-                    deleteRBTree(root, delete_x);
-                    printf("删除结点成功!\n");
+                    if ((deleteRBTree(root, delete_x)) == OK) printf("删除结点成功!\n");
+                    else printf("删除结点失败, 不存在该结点!\n");
                 } else printf("不存在红黑树, 请先初始化!\n");
                 break;
             case 5:  /* 插入 */
