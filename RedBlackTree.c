@@ -134,3 +134,43 @@ Status deleteRBTree(RBRoot *root, RBTreeElemType x)
 
     return ERROR;
 }
+
+/**
+ * 红黑树信息的打印
+ *
+ * @param[in]  tree    : the node of the red-black tree
+ * @param[in]  data    : the data of the node
+ * @param[in]  position: 0 - the current node is the root node
+ *                      -1 - the current node is the left child node
+ *                       1 - the current node is the right child node
+ * @return  the operation status, OK is 0, ERROR is -1
+ */
+Status PrintRBTreeInfo(RBTree tree, RBTreeElemType data, int position) {
+    if (tree) {
+        if (position == 0) printf("[%d](BLACK)是根节点\n", tree->data);
+        else printf("[%d](%s)是[%d]的%s孩子结点\n", tree->data, RBTreeIsRed(tree) ? "RED" : "BLACK",
+                    data, position == -1 ? "左" : "右");
+
+        PrintRBTreeInfo(tree->left, tree->data, -1);
+        PrintRBTreeInfo(tree->right, tree->data, 1);
+
+        return OK;
+    }
+
+    return ERROR;
+}
+
+/**
+ * 打印红黑树
+ *
+ * @param[in]  root: the root of the red-black tree
+ * @return  the operation status, OK is 0, ERROR is -1
+ */
+Status printRBTree(RBRoot *root) {
+    if (root && root->node) {
+        PrintRBTreeInfo(root->node, root->node->data, 0);
+        return OK;
+    }
+
+    return ERROR;
+}
