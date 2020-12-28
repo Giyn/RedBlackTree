@@ -36,4 +36,15 @@ void main() {
     inorderRBTree(root);
     printf("\n后序遍历的结果: ");
     postorderRBTree(root);
+
+    printf("\n删除结点[%d], [%d].\n", array[length_of_array / 2], array[length_of_array / 3]);
+    deleteRBTree(root, array[length_of_array / 2]);
+    deleteRBTree(root, array[length_of_array / 3]);
+
+    printf("\n前序遍历的结果: ");
+    preorderRBTree(root);
+    printf("\n中序遍历的结果: ");
+    inorderRBTree(root);
+    printf("\n后序遍历的结果: ");
+    postorderRBTree(root);
 }
