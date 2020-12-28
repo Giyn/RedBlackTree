@@ -40,7 +40,9 @@ typedef struct RB_Root {
 /* 操作状态码 */
 typedef enum {
     OK = 0,
-    ERROR = -1
+    ERROR = -1,
+    SUCCESS = 1,
+    FALSE = 0
 } Status;
 
 /* 创建红黑树 */
