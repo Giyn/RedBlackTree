@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include "RBTree.h"
 #include "RBTreeUtils.h"
+#include "BinaryTree.h"
 
 /**
  * 创建红黑树
@@ -85,7 +86,7 @@ Status postorderRBTree(RBRoot *root) {
  * @return  the operation status, OK is 0, ERROR is -1
  */
 Status recursiveSearchRBTree(RBRoot *root, RBTreeElemType x) {
-    if (root) return searchNode(root->node, x) ? OK : ERROR;
+    if (root) return recursiveSearchNode(root->node, x) ? OK : ERROR;
 }
 
 /**
@@ -96,7 +97,7 @@ Status recursiveSearchRBTree(RBRoot *root, RBTreeElemType x) {
  * @return  the operation status, OK is 0, ERROR is -1
  */
 Status insertRBTree(RBRoot *root, RBTreeElemType x) {
-    if (searchNode(root->node, x)) return ERROR;
+    if (recursiveSearchNode(root->node, x)) return ERROR;
 
     Node *node;
     node = createRBTreeNode(x, NULL, NULL, NULL);
@@ -117,5 +118,5 @@ Status insertRBTree(RBRoot *root, RBTreeElemType x) {
  */
 Status deleteRBTree(RBRoot *root, RBTreeElemType x) {
     Node *p;
-    if (p = searchNode(root->node, x)) deleteRBTreeNode(root, p);
+    if (p = recursiveSearchNode(root->node, x)) deleteRBTreeNode(root, p);
 }
