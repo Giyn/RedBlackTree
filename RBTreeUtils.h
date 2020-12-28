@@ -17,29 +17,14 @@ Status RBTreeLeftRotate(RBRoot *root, Node *node);
 /* 红黑树结点右旋 */
 Status RBTreeRightRotate(RBRoot *root, Node *node);
 
-/* 二叉查找树插入结点 */
-Status insertBinarySearchTree(RBRoot *root, Node *node);
-
 /* 红黑树插入结点后自平衡 */
 Status RBTreeInsertSelfBalancing(RBRoot *root, Node *node);
-
-/* 二叉查找树查找最小结点 */
-RBTree minBinarySearchTreeNode(RBTree tree);
-
-/* 二叉查找树查找最大结点 */
-RBTree maxBinarySearchTreeNode(RBTree tree);
 
 /* 红黑树查找最小结点 */
 Status minRBTreeNode(RBRoot *root, RBTreeElemType *minVal);
 
 /* 红黑树查找最大结点 */
 Status maxRBTreeNode(RBRoot *root, RBTreeElemType *maxVal);
-
-/* 二叉查找树查找前驱结点 */
-RBTree BSTreePrecursor(RBTree node);
-
-/* 二叉查找树查找后继结点 */
-RBTree BSTreeSuccessor(RBTree node);
 
 /* 红黑树删除结点后自平衡 */
 Status RBTreeDeleteSelfBalancing(RBRoot *root, Node *node, Node *parent);
