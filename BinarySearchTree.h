@@ -5,7 +5,7 @@
  * @date 2020/12/18
  */
 
-#include "RBTree.h"
+#include "RedBlackTree.h"
 
 #ifndef RBTREE_BINARYSEARCHTREE_H
 #define RBTREE_BINARYSEARCHTREE_H

@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "RBTree.h"
+#include "RedBlackTree.h"
 #include "BinarySearchTree.h"
 
 /**

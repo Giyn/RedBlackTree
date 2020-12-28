@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "RBTree.h"
+#include "RedBlackTree.h"
 
 void main() {
     int length_of_array, i;
