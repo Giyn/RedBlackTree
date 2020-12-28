@@ -27,8 +27,6 @@ void main() {
  * @return  none
  */
 _Noreturn void menu(RBRoot *root) {
-    int length_of_array;
-    int i;
     int exist_flag = 0;
     int delete_x;
     int insert_x;
@@ -36,7 +34,7 @@ _Noreturn void menu(RBRoot *root) {
     while (true) {
         system("cls");
         printf("\n\n\n");
-        printf("---------------------------\n");
+        printf("-------------------------------\n");
         printf(">>> 1.初始化红黑树\n");
         printf(">>> 2.打印红黑树\n");
         printf(">>> 3.销毁红黑树\n");
@@ -48,8 +46,15 @@ _Noreturn void menu(RBRoot *root) {
         printf(">>> 9.中序遍历\n");
         printf(">>> 10.后序遍历\n");
         printf(">>> 11.退出\n");
-        printf("---------------------------\n");
+        printf("-------------------------------\n");
+        if(exist_flag) {
+            inorderRBTree(root); /* 实时遍历红黑树 */
+            printf("\n");
+        }
+        else printf("不存在红黑树!\n");
+        printf("-------------------------------\n");
         printf("----->>> 请输入你想执行的操作:");
+
         switch (InputInteger()) {
             case 1:  /* 初始化 */
                 root = createRBTree();
@@ -69,7 +74,7 @@ _Noreturn void menu(RBRoot *root) {
                 break;
             case 4:  /* 删除 */
                 if (exist_flag) {
-                    printf("请输入你想要删除的结点:");
+                    printf("请输入你想删除的结点:");
                     delete_x = InputInteger();
                     deleteRBTree(root, delete_x);
                     printf("删除结点成功!\n");
@@ -77,7 +82,7 @@ _Noreturn void menu(RBRoot *root) {
                 break;
             case 5:  /* 插入 */
                 if (exist_flag){
-                    printf("请输入你想要插入的结点:");
+                    printf("请输入你想插入的结点:");
                     insert_x = InputInteger();
                     insertRBTree(root, insert_x);
                     printf("插入结点成功!\n");
@@ -88,7 +93,8 @@ _Noreturn void menu(RBRoot *root) {
                 if (exist_flag) {
                     /* 设置随机数种子 */
                     srand((unsigned int) time(NULL));
-                    printf("请输入一个正整数:");
+                    printf("请输入你想插入的结点数量:");
+                    int i, length_of_array;
                     length_of_array = InputInteger();
                     /* 以变量表示数组长度 */
                     int *const array = (int *) malloc(sizeof(int) * length_of_array);
@@ -104,7 +110,7 @@ _Noreturn void menu(RBRoot *root) {
                 break;
             case 7:  /* 查找 */
                 if (exist_flag) {
-                    printf("请输入你想要查找的结点:");
+                    printf("请输入你想查找的结点:");
                     search_x = InputInteger();
                     if ((recursiveSearchRBTree(root, search_x)) == OK) printf("查找成功, 存在该结点!\n");
                     else printf("查找失败, 不存在该结点!\n");
