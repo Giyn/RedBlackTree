@@ -107,3 +107,15 @@ Status insertRBTree(RBRoot *root, RBTreeElemType x) {
 
     return OK;
 }
+
+/**
+ * 红黑树删除数据域为x的结点
+ *
+ * @param[in]  root: the root of the red-black tree
+ * @param[in]  key : the data of the node to be deleted
+ * @return  the operation status, OK is 0, ERROR is -1
+ */
+Status deleteRBTree(RBRoot *root, RBTreeElemType x) {
+    Node *p;
+    if (p = searchNode(root->node, x)) deleteRBTreeNode(root, p);
+}

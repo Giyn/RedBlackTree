@@ -64,4 +64,7 @@ Status recursiveSearchRBTree(RBRoot *root, RBTreeElemType x);
 /* 红黑树插入结点 */
 Status insertRBTree(RBRoot *root, RBTreeElemType x);
 
+/* 红黑树删除结点 */
+Status deleteRBTree(RBRoot *root, RBTreeElemType x);
+
 #endif /* RBTREE_H */
