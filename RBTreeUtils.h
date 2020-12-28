@@ -59,4 +59,7 @@ RBTree BSTreeSuccessor(RBTree node);
 /* 红黑树删除结点后自平衡 */
 Status RBTreeDeleteSelfBalancing(RBRoot *root, Node *node, Node *parent);
 
+/* 红黑树删除结点指针 */
+Status deleteRBTreeNode(RBRoot *root, Node *node);
+
 #endif /* RBTREEUTILS_H */

@@ -461,3 +461,77 @@ Status RBTreeDeleteSelfBalancing(RBRoot *root, Node *node, Node *parent) {
 
     return OK;
 }
+
+/**
+ * 红黑树删除结点指针
+ *
+ * @param[in]  root: the root of the red-black tree
+ * @param[in]  node: the deleted node
+ * @return  the operation status, OK is 0, ERROR is -1
+ */
+Status deleteRBTreeNode(RBRoot *root, Node *node) {
+    Node *child = NULL, *parent = NULL;
+    int color;
+
+    /* 删除结点的左右孩子结点都存在 */
+    if (node->left && node->right) {
+        Node *replace = node;
+        /* 替代结点, 即后继结点 */
+        replace = replace->right;
+        /* 获取最小的后继结点 */
+        while (replace->left) replace = replace->left;
+
+        /* node结点不是根结点 */
+        if (RBTreeParent(node)) {
+            if (node == RBTreeParent(node)->left) RBTreeParent(node)->left = replace;
+            else RBTreeParent(node)->right = replace;
+        } else root->node = replace;  /* node结点是根结点 */
+
+        /* child是替代结点的右孩子, 可能需要填补替代结点的位置 */
+        child = replace->right;
+        /* 保存替代结点的父结点 */
+        parent = RBTreeParent(replace);
+        /* 保存替代结点的颜色 */
+        color = RBTreeColor(replace);
+
+        /* 替代结点是删除结点的右孩子结点 */
+        if (parent == node) parent = replace;
+        else {
+            if (child) RBTreeSetParent(child, parent);
+            /* 替代结点的右孩子结点填补替代结点的位置(替代结点不可能有左孩子结点, 否则其才是后继结点) */
+            parent->left = child;
+            replace->right = node->right;
+            RBTreeSetParent(node->right, replace);
+        }
+
+        /* 替代结点操作 */
+        replace->parent = node->parent;
+        replace->color = node->color;
+        replace->left = node->left;
+        node->left->parent = replace;
+
+        /* 替代结点为黑色, 需要自平衡 */
+        if (color == BLACK) RBTreeDeleteSelfBalancing(root, child, parent);
+        free(node);
+
+        return OK;
+    }
+
+    /* 删除结点只存在一个孩子结点或者没有孩子结点 */
+    if (node->left) child = node->left;
+    else child = node->right;
+    parent = node->parent;
+    color = node->color;
+    if (child) child->parent = parent;
+
+    /* node结点不是根结点 */
+    if (parent) {
+        if (node == parent->left) parent->left = child;
+        else parent->right = child;
+    } else root->node = child;
+
+    if (color == BLACK) RBTreeDeleteSelfBalancing(root, child, parent);
+    free(node);
+
+    return OK;
+}
