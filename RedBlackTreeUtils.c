@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include "RedBlackTree.h"
 #include "BinarySearchTree.h"
+#include "BalancedBinaryTree.h"
 
 /**
  * 创建红黑树结点
