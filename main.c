@@ -10,7 +10,8 @@
 #include <time.h>
 #include "RedBlackTree.h"
 
-void main() {
+void main()
+{
     int length_of_array, i;
     /* 设置随机数种子 */
     srand((unsigned int)time(NULL));

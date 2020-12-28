@@ -18,7 +18,8 @@
  * @param[in]  none
  * @return  the root of the red-black tree
  */
-RBRoot *createRBTree() {
+RBRoot *createRBTree()
+{
     RBRoot *root = (RBRoot *) malloc(sizeof(RBRoot));
     root->node = NULL;
 
@@ -31,7 +32,8 @@ RBRoot *createRBTree() {
  * @param[in]  root  the root of the red-black tree
  * @return  the operation status, OK is 0, ERROR is -1
  */
-Status destroyRBTree(RBRoot *root) {
+Status destroyRBTree(RBRoot *root)
+{
     if (!root) return ERROR;
     else destroyBinaryTree(root->node);
 
@@ -46,7 +48,8 @@ Status destroyRBTree(RBRoot *root) {
  * @param[in]  root: the root of the red-black tree
  * @return  the operation status, OK is 0, ERROR is -1
  */
-Status preorderRBTree(RBRoot *root) {
+Status preorderRBTree(RBRoot *root)
+{
     if (!root) return ERROR;
     else preorderBiTree(root->node);
 
@@ -59,7 +62,8 @@ Status preorderRBTree(RBRoot *root) {
  * @param[in]  root: the root of the red-black tree
  * @return  the operation status, OK is 0, ERROR is -1
  */
-Status inorderRBTree(RBRoot *root) {
+Status inorderRBTree(RBRoot *root)
+{
     if (!root) return ERROR;
     else inorderBiTree(root->node);
 
@@ -72,7 +76,8 @@ Status inorderRBTree(RBRoot *root) {
  * @param[in]  root: the root of the red-black tree
  * @return  the operation status, OK is 0, ERROR is -1
  */
-Status postorderRBTree(RBRoot *root) {
+Status postorderRBTree(RBRoot *root)
+{
     if (!root) return ERROR;
     else postorderBiTree(root->node);
 
@@ -86,7 +91,8 @@ Status postorderRBTree(RBRoot *root) {
  * @param[in]  x   : the data of the node
  * @return  the operation status, OK is 0, ERROR is -1
  */
-Status recursiveSearchRBTree(RBRoot *root, RBTreeElemType x) {
+Status recursiveSearchRBTree(RBRoot *root, RBTreeElemType x)
+{
     if (root) return recursiveSearchNode(root->node, x) ? OK : ERROR;
 }
 
@@ -97,7 +103,8 @@ Status recursiveSearchRBTree(RBRoot *root, RBTreeElemType x) {
  * @param[in]  x   : the data of the node
  * @return  the operation status, OK is 0, ERROR is -1
  */
-Status insertRBTree(RBRoot *root, RBTreeElemType x) {
+Status insertRBTree(RBRoot *root, RBTreeElemType x)
+{
     if (recursiveSearchNode(root->node, x)) return ERROR;
 
     Node *node;
@@ -117,7 +124,8 @@ Status insertRBTree(RBRoot *root, RBTreeElemType x) {
  * @param[in]  key : the data of the node to be deleted
  * @return  the operation status, OK is 0, ERROR is -1
  */
-Status deleteRBTree(RBRoot *root, RBTreeElemType x) {
+Status deleteRBTree(RBRoot *root, RBTreeElemType x)
+{
     Node *p;
     if (p = recursiveSearchNode(root->node, x)) deleteRBTreeNode(root, p);
 }

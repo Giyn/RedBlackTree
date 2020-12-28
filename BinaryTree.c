@@ -15,7 +15,8 @@
  * @param[in]  tree  the node of the binary tree
  * @return  the operation status, OK is 0, ERROR is -1
  */
-Status destroyBinaryTree(RBTree tree) {
+Status destroyBinaryTree(RBTree tree)
+{
     if (!tree) return ERROR;
 
     if (tree->left) destroyBinaryTree(tree->left);
@@ -32,7 +33,8 @@ Status destroyBinaryTree(RBTree tree) {
  * @param[in]  tree: the node of the binary tree
  * @return  the operation status, OK is 0, ERROR is -1
  */
-Status preorderBiTree(RBTree tree) {
+Status preorderBiTree(RBTree tree)
+{
     if (!tree) return ERROR;
     else {
         printf("%d ", tree->data);
@@ -49,7 +51,8 @@ Status preorderBiTree(RBTree tree) {
  * @param[in]  tree: the node of the binary tree
  * @return  the operation status, OK is 0, ERROR is -1
  */
-Status inorderBiTree(RBTree tree) {
+Status inorderBiTree(RBTree tree)
+{
     if (!tree) return ERROR;
     else {
         inorderBiTree(tree->left);
@@ -66,7 +69,8 @@ Status inorderBiTree(RBTree tree) {
  * @param[in]  tree: the node of the binary tree
  * @return  the operation status, OK is 0, ERROR is -1
  */
-Status postorderBiTree(RBTree tree) {
+Status postorderBiTree(RBTree tree)
+{
     if (!tree) return ERROR;
     else {
         postorderBiTree(tree->left);
@@ -84,7 +88,8 @@ Status postorderBiTree(RBTree tree) {
  * @param[in]  x   : the data of the node
  * @return  the target node
  */
-RBTree recursiveSearchNode(RBTree tree, RBTreeElemType x) {
+RBTree recursiveSearchNode(RBTree tree, RBTreeElemType x)
+{
     if (!tree || tree->data == x) return tree;
     else if (tree->data > x) return recursiveSearchNode(tree->left, x);
     else return recursiveSearchNode(tree->right, x);

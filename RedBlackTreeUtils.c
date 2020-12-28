@@ -20,7 +20,8 @@
  * @param[in]  right : its right child node
  * @return  the new red-black tree node pointer
  */
-RBTree createRBTreeNode(RBTreeElemType x, Node *parent, Node *left, Node *right) {
+RBTree createRBTreeNode(RBTreeElemType x, Node *parent, Node *left, Node *right)
+{
     RBTree node = (Node *) malloc(sizeof(Node));
     if (!node) return NULL;
 
@@ -40,7 +41,8 @@ RBTree createRBTreeNode(RBTreeElemType x, Node *parent, Node *left, Node *right)
  * @param[in]  node: the inserted node
  * @return  the operation status, OK is 0, ERROR is -1
  */
-Status RBTreeInsertSelfBalancing(RBRoot *root, Node *node) {
+Status RBTreeInsertSelfBalancing(RBRoot *root, Node *node)
+{
     Node *parent, *grandparent;
 
     /* 父结点为红色结点 */
@@ -117,7 +119,8 @@ Status RBTreeInsertSelfBalancing(RBRoot *root, Node *node) {
  * @param[in]  minVal: the minimum value of the red-black tree
  * @return  the operation status, OK is 0, ERROR is -1
  */
-Status minRBTreeNode(RBRoot *root, RBTreeElemType *minVal) {
+Status minRBTreeNode(RBRoot *root, RBTreeElemType *minVal)
+{
     Node *node = NULL;
 
     if (root) node = minBinarySearchTreeNode(root->node);
@@ -135,7 +138,8 @@ Status minRBTreeNode(RBRoot *root, RBTreeElemType *minVal) {
  * @param[in]  maxVal: the maximum value of the red-black tree
  * @return  the operation status, OK is 0, ERROR is -1
  */
-Status maxRBTreeNode(RBRoot *root, RBTreeElemType *maxVal) {
+Status maxRBTreeNode(RBRoot *root, RBTreeElemType *maxVal)
+{
     Node *node = NULL;
 
     if (root) node = maxBinarySearchTreeNode(root->node);
@@ -154,7 +158,8 @@ Status maxRBTreeNode(RBRoot *root, RBTreeElemType *maxVal) {
  * @param[in]  parent: the deleted node
  * @return  the operation status, OK is 0, ERROR is -1
  */
-Status RBTreeDeleteSelfBalancing(RBRoot *root, Node *node, Node *parent) {
+Status RBTreeDeleteSelfBalancing(RBRoot *root, Node *node, Node *parent)
+{
     Node *sibling = NULL;
 
     while ((!node || RBTreeIsBlack(node)) && node != root->node) {
@@ -234,7 +239,8 @@ Status RBTreeDeleteSelfBalancing(RBRoot *root, Node *node, Node *parent) {
  * @param[in]  node: the deleted node
  * @return  the operation status, OK is 0, ERROR is -1
  */
-Status deleteRBTreeNode(RBRoot *root, Node *node) {
+Status deleteRBTreeNode(RBRoot *root, Node *node)
+{
     Node *child = NULL, *parent = NULL;
     int color;
 

@@ -15,7 +15,8 @@
  * @param[in]  node: the inserted node
  * @return  the operation status, OK is 0, ERROR is -1
  */
-Status insertBinarySearchTree(RBRoot *root, Node *node) {
+Status insertBinarySearchTree(RBRoot *root, Node *node)
+{
     Node *p = root->node;
     Node *last = NULL;
 
@@ -42,7 +43,8 @@ Status insertBinarySearchTree(RBRoot *root, Node *node) {
  * @param[in]  tree: the root of the binary search tree
  * @return  the minimum node of the binary search tree
  */
-RBTree minBinarySearchTreeNode(RBTree tree) {
+RBTree minBinarySearchTreeNode(RBTree tree)
+{
     if (!tree) return NULL;
 
     while (tree->left) tree = tree->left;
@@ -56,7 +58,8 @@ RBTree minBinarySearchTreeNode(RBTree tree) {
  * @param[in]  tree: the root of the binary search tree
  * @return  the maximum node of the binary search tree
  */
-RBTree maxBinarySearchTreeNode(RBTree tree) {
+RBTree maxBinarySearchTreeNode(RBTree tree)
+{
     if (!tree) return NULL;
 
     while (tree->right) tree = tree->right;
@@ -70,7 +73,8 @@ RBTree maxBinarySearchTreeNode(RBTree tree) {
  * @param[in]  node: the node to be found its precursor
  * @return  the target precursor node
  */
-RBTree BSTreePrecursor(RBTree node) {
+RBTree BSTreePrecursor(RBTree node)
+{
     if (node->left) return maxBinarySearchTreeNode(node->left);
 
     Node *p = node->parent;
@@ -88,7 +92,8 @@ RBTree BSTreePrecursor(RBTree node) {
  * @param[in]  node: the node to be found its successor
  * @return  the target successor node
  */
-RBTree BSTreeSuccessor(RBTree node) {
+RBTree BSTreeSuccessor(RBTree node)
+{
     if (node->right) return minBinarySearchTreeNode(node->right);
 
     Node *p = node->parent;
