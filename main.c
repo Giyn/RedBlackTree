@@ -42,7 +42,7 @@ _Noreturn void menu(RBRoot *root) {
         printf(">>> 3.销毁红黑树\n");
         printf(">>> 4.删除结点\n");
         printf(">>> 5.插入结点\n");
-        printf(">>> 6.随机插入指定数量的结点\n");
+        printf(">>> 6.插入指定数量的随机(1-100)结点\n");
         printf(">>> 7.查找结点\n");
         printf(">>> 8.前序遍历\n");
         printf(">>> 9.中序遍历\n");
