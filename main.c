@@ -49,7 +49,8 @@ _Noreturn void menu(RBRoot *root) {
         printf("-------------------------------\n");
         if(exist_flag) {
             inorderRBTree(root); /* 实时遍历红黑树 */
-            printf("\n");
+            if (root->node) printf("(中序遍历)\n");
+            else printf("\n");
         }
         else printf("不存在红黑树!\n");
         printf("-------------------------------\n");
