@@ -1,5 +1,5 @@
 /**
- * @filename BinaryTree.c
+ * @filename BinaryTree.h
  * @description Binary tree interface declaration
  * @author 许继元
  * @date 2020/12/18
