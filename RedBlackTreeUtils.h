@@ -11,12 +11,6 @@
 /* 创建红黑树结点 */
 RBTree createRBTreeNode(RBTreeElemType x, Node *parent, Node *left, Node *right);
 
-/* 红黑树结点左旋 */
-Status RBTreeLeftRotate(RBRoot *root, Node *node);
-
-/* 红黑树结点右旋 */
-Status RBTreeRightRotate(RBRoot *root, Node *node);
-
 /* 红黑树插入结点后自平衡 */
 Status RBTreeInsertSelfBalancing(RBRoot *root, Node *node);
 
