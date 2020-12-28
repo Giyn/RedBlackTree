@@ -62,7 +62,7 @@ _Noreturn void menu(RBRoot *root) {
                 printf("初始化红黑树成功!\n");
                 break;
             case 2:  /* 打印 */
-                if (exist_flag) printf("打印红黑树\n");
+                if (exist_flag) printRBTree(root);
                 else printf("不存在红黑树, 请先初始化!\n");
                 break;
             case 3:  /* 销毁 */
