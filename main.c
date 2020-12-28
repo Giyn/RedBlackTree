@@ -134,6 +134,9 @@ _Noreturn void menu(RBRoot *root) {
                     printf("\n");
                 } else printf("不存在红黑树, 请先初始化!\n");
                 break;
+            case 11:  /* 退出程序 */
+                printf("再见!");
+                exit(0);
             default:
                 break;
         }
