@@ -7,45 +7,68 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #include <time.h>
 #include "RedBlackTree.h"
 
-void main()
-{
-    int length_of_array, i;
-    /* 设置随机数种子 */
-    srand((unsigned int)time(NULL));
+int InputInteger();
 
-    printf("请输入一个正整数:");
-    scanf("%d", &length_of_array);
+void main() {
+    RBRoot *root = NULL;
+}
 
-    /* 以变量表示数组长度 */
-    int* const array = (int*)malloc(sizeof(int)*length_of_array);
-    /* 生成元素位于1~100的数组 */
-    for (i = 0; i < length_of_array; i++) array[i] = rand() % 100;
+/**
+ * 检测用户整数输入
+ *
+ * @param[in]  none
+ * @return  legal integer
+ */
+int InputInteger() {
+    /* store converted numbers */
+    int integer = 0;
+    /* flag status */
+    Status status = FALSE;
+    /* receive string */
+    char str[100];
 
-    RBRoot *root = createRBTree();
-    printf("生成的数组为: ");
-    for (i = 0; i < length_of_array; i++) {
-        printf("%d ", array[i]);
-        insertRBTree(root, array[i]);
-    }
+    do {
+        scanf("%s", str);
+        status = SUCCESS;
+        for (int i = 0; str[i] != '\0'; i++) {
+            /* check for illegal characters */
+            if (i == 0) {
+                if (str[i] == '-' || str[i] == '+') continue;
+            } else {
+                if (str[i] < '0' || str[i] > '9') status = FALSE;
+            }
+        }
+        if (status == FALSE) {
+            printf("输入非法, 请重新输入!\n");
+            break;
+        } else {
+            int i = 0;
+            /* Convert string to number */
+            for (i = 0, integer = 0; str[i] != '\0'; i++) {
+                if (i == 0) {
+                    if (str[i] == '-' || str[i] == '+') continue;
+                    else {
+                        integer *= 10;
+                        integer += (str[i] - 48);
+                    }
+                } else {
+                    integer *= 10;
+                    integer += (str[i] - 48);
+                }
+            }
+            if (str[0] == '-') integer = -integer;
 
-    printf("\n前序遍历的结果: ");
-    preorderRBTree(root);
-    printf("\n中序遍历的结果: ");
-    inorderRBTree(root);
-    printf("\n后序遍历的结果: ");
-    postorderRBTree(root);
+            /* check if the number entered is out of bounds */
+            if (i >= 10) {
+                printf("溢出, 请重新输入:");
+                status = FALSE;
+            }
+        }
+    } while (status == FALSE);
 
-    printf("\n删除结点: [%d], [%d].", array[length_of_array / 2], array[length_of_array / 3]);
-    deleteRBTree(root, array[length_of_array / 2]);
-    deleteRBTree(root, array[length_of_array / 3]);
-
-    printf("\n前序遍历的结果: ");
-    preorderRBTree(root);
-    printf("\n中序遍历的结果: ");
-    inorderRBTree(root);
-    printf("\n后序遍历的结果: ");
-    postorderRBTree(root);
+    return integer;
 }
