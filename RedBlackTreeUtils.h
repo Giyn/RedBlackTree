@@ -26,4 +26,7 @@ Status RBTreeDeleteSelfBalancing(RBRoot *root, Node *node, Node *parent);
 /* 红黑树删除结点指针 */
 Status deleteRBTreeNode(RBRoot *root, Node *node);
 
+/* 红黑树信息的打印 */
+Status PrintRBTreeInfo(RBTree tree, RBTreeElemType data, int position);
+
 #endif /* RBTREEUTILS_H */
