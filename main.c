@@ -161,7 +161,8 @@ int InputInteger() {
     do {
         scanf("%s", str);
         status = SUCCESS;
-        for (int i = 0; str[i] != '\0'; i++) {
+        int i;
+        for (i = 0; str[i] != '\0'; i++) {
             /* check for illegal characters */
             if (i == 0) {
                 if (str[i] == '-' || str[i] == '+') continue;
@@ -173,7 +174,6 @@ int InputInteger() {
             printf("输入非法, 请重新输入!\n");
             break;
         } else {
-            int i = 0;
             /* Convert string to number */
             for (i = 0, integer = 0; str[i] != '\0'; i++) {
                 if (i == 0) {
