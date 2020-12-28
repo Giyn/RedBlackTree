@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "RedBlackTree.h"
-#include "RBTreeUtils.h"
+#include "RedBlackTreeUtils.h"
 #include "BinaryTree.h"
 
 /**
