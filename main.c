@@ -136,7 +136,7 @@ _Noreturn void menu(RBRoot *root)
                     search_x = InputInteger();
                     if ((recursiveSearchRBTree(root, search_x)) == SUCCESS) printf("查找成功, 存在该结点!\n");
                     else printf("查找失败, 不存在该结点!\n");
-                }
+                } else printf("不存在红黑树, 请先初始化!\n");
                 break;
             case 8:  /* 前序遍历 */
                 if (exist_flag) {
