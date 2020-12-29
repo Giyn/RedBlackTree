@@ -13,7 +13,7 @@
  *
  * @param[in]  root: the root of the binary search tree
  * @param[in]  node: the inserted node
- * @return  the operation status, OK is 0, ERROR is -1
+ * @return  the operation status, SUCCESS is 0, FAILED is -1
  */
 Status insertBinarySearchTree(RBRoot *root, Node *node)
 {
@@ -34,7 +34,7 @@ Status insertBinarySearchTree(RBRoot *root, Node *node)
 
     node->color = RED;
 
-    return OK;
+    return SUCCESS;
 }
 
 /**

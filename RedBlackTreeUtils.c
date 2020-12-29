@@ -39,7 +39,7 @@ RBTree createRBTreeNode(RBTreeElemType x, Node *parent, Node *left, Node *right)
  *
  * @param[in]  root: the root of the red-black tree
  * @param[in]  node: the inserted node
- * @return  the operation status, OK is 0, ERROR is -1
+ * @return  the operation status, SUCCESS is 0, FAILED is -1
  */
 Status RBTreeInsertSelfBalancing(RBRoot *root, Node *node)
 {
@@ -109,7 +109,7 @@ Status RBTreeInsertSelfBalancing(RBRoot *root, Node *node)
 
     RBTreeSetBlack(root->node);
 
-    return OK;
+    return SUCCESS;
 }
 
 /**
@@ -117,18 +117,18 @@ Status RBTreeInsertSelfBalancing(RBRoot *root, Node *node)
  *
  * @param[in]  root  : the root of the red-black tree
  * @param[in]  minVal: the minimum value of the red-black tree
- * @return  the operation status, OK is 0, ERROR is -1
+ * @return  the operation status, SUCCESS is 0, FAILED is -1
  */
 Status minRBTreeNode(RBRoot *root, RBTreeElemType *minVal)
 {
     Node *node = NULL;
 
     if (root) node = minBinarySearchTreeNode(root->node);
-    if (!node) return ERROR;
+    if (!node) return FAILED;
 
     *minVal = node->data;
 
-    return OK;
+    return SUCCESS;
 }
 
 /**
@@ -136,18 +136,18 @@ Status minRBTreeNode(RBRoot *root, RBTreeElemType *minVal)
  *
  * @param[in]  root  : the root of the red-black tree
  * @param[in]  maxVal: the maximum value of the red-black tree
- * @return  the operation status, OK is 0, ERROR is -1
+ * @return  the operation status, SUCCESS is 0, FAILED is -1
  */
 Status maxRBTreeNode(RBRoot *root, RBTreeElemType *maxVal)
 {
     Node *node = NULL;
 
     if (root) node = maxBinarySearchTreeNode(root->node);
-    if (!node) return ERROR;
+    if (!node) return FAILED;
 
     *maxVal = node->data;
 
-    return OK;
+    return SUCCESS;
 }
 
 /**
@@ -156,7 +156,7 @@ Status maxRBTreeNode(RBRoot *root, RBTreeElemType *maxVal)
  * @param[in]  root  : the root of the red-black tree
  * @param[in]  node  : the deleted node
  * @param[in]  parent: the deleted node
- * @return  the operation status, OK is 0, ERROR is -1
+ * @return  the operation status, SUCCESS is 0, FAILED is -1
  */
 Status RBTreeDeleteSelfBalancing(RBRoot *root, Node *node, Node *parent)
 {
@@ -229,7 +229,7 @@ Status RBTreeDeleteSelfBalancing(RBRoot *root, Node *node, Node *parent)
     }
     if (node) RBTreeSetBlack(node);
 
-    return OK;
+    return SUCCESS;
 }
 
 /**
@@ -237,7 +237,7 @@ Status RBTreeDeleteSelfBalancing(RBRoot *root, Node *node, Node *parent)
  *
  * @param[in]  root: the root of the red-black tree
  * @param[in]  node: the deleted node
- * @return  the operation status, OK is 0, ERROR is -1
+ * @return  the operation status, SUCCESS is 0, FAILED is -1
  */
 Status deleteRBTreeNode(RBRoot *root, Node *node)
 {
@@ -285,7 +285,7 @@ Status deleteRBTreeNode(RBRoot *root, Node *node)
         if (color == BLACK) RBTreeDeleteSelfBalancing(root, child, parent);
         free(node);
 
-        return OK;
+        return SUCCESS;
     }
 
     /* 删除结点只存在一个孩子结点或者没有孩子结点 */
@@ -304,7 +304,7 @@ Status deleteRBTreeNode(RBRoot *root, Node *node)
     if (color == BLACK) RBTreeDeleteSelfBalancing(root, child, parent);
     free(node);
 
-    return OK;
+    return SUCCESS;
 }
 
 /**
@@ -315,7 +315,7 @@ Status deleteRBTreeNode(RBRoot *root, Node *node)
  * @param[in]  position: 0 - the current node is the root node
  *                      -1 - the current node is the left child node
  *                       1 - the current node is the right child node
- * @return  the operation status, OK is 0, ERROR is -1
+ * @return  the operation status, SUCCESS is 0, FAILED is -1
  */
 Status PrintRBTreeInfo(RBTree tree, RBTreeElemType data, int position)
 {
@@ -327,10 +327,10 @@ Status PrintRBTreeInfo(RBTree tree, RBTreeElemType data, int position)
         PrintRBTreeInfo(tree->left, tree->data, -1);
         PrintRBTreeInfo(tree->right, tree->data, 1);
 
-        return OK;
+        return SUCCESS;
     }
 
-    return ERROR;
+    return FAILED;
 }
 
 /**
@@ -338,15 +338,15 @@ Status PrintRBTreeInfo(RBTree tree, RBTreeElemType data, int position)
  *
  * @param[in]  tree : the node of the red-black tree
  * @param[in]  depth: the depth of the red-black tree node
- * @return  the operation status, OK is 0, ERROR is -1
+ * @return  the operation status, SUCCESS is 0, FAILED is -1
  */
 Status recessedPrintRBTree(RBTree tree, int depth)
 {
-    if (!tree) return ERROR;
+    if (!tree) return FAILED;
     recessedPrintRBTree(tree->right, depth + 1);
     for (int i = 0; i < depth; i++) printf("    ");
     printf("%d(%s)\n", tree->data, RBTreeIsRed(tree) ? "R" : "B");
     recessedPrintRBTree(tree->left, depth + 1);
 
-    return OK;
+    return SUCCESS;
 }

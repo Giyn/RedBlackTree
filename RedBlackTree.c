@@ -30,58 +30,58 @@ RBRoot *createRBTree()
  * 销毁红黑树
  *
  * @param[in]  root  the root of the red-black tree
- * @return  the operation status, OK is 0, ERROR is -1
+ * @return  the operation status, SUCCESS is 0, FAILED is -1
  */
 Status destroyRBTree(RBRoot *root)
 {
-    if (!root) return ERROR;
+    if (!root) return FAILED;
     else destroyBinaryTree(root->node);
 
     free(root);
 
-    return OK;
+    return SUCCESS;
 }
 
 /**
  * 前序遍历红黑树
  *
  * @param[in]  root: the root of the red-black tree
- * @return  the operation status, OK is 0, ERROR is -1
+ * @return  the operation status, SUCCESS is 0, FAILED is -1
  */
 Status preorderRBTree(RBRoot *root)
 {
-    if (!root) return ERROR;
+    if (!root) return FAILED;
     else preorderBiTree(root->node);
 
-    return OK;
+    return SUCCESS;
 }
 
 /**
  * 中序遍历红黑树
  *
  * @param[in]  root: the root of the red-black tree
- * @return  the operation status, OK is 0, ERROR is -1
+ * @return  the operation status, SUCCESS is 0, FAILED is -1
  */
 Status inorderRBTree(RBRoot *root)
 {
-    if (!root) return ERROR;
+    if (!root) return FAILED;
     else inorderBiTree(root->node);
 
-    return OK;
+    return SUCCESS;
 }
 
 /**
  * 后序遍历红黑树
  *
  * @param[in]  root: the root of the red-black tree
- * @return  the operation status, OK is 0, ERROR is -1
+ * @return  the operation status, SUCCESS is 0, FAILED is -1
  */
 Status postorderRBTree(RBRoot *root)
 {
-    if (!root) return ERROR;
+    if (!root) return FAILED;
     else postorderBiTree(root->node);
 
-    return OK;
+    return SUCCESS;
 }
 
 /**
@@ -89,11 +89,11 @@ Status postorderRBTree(RBRoot *root)
  *
  * @param[in]  root: the root of the red-black tree
  * @param[in]  x   : the data of the node
- * @return  the operation status, OK is 0, ERROR is -1
+ * @return  the operation status, SUCCESS is 0, FAILED is -1
  */
 Status recursiveSearchRBTree(RBRoot *root, RBTreeElemType x)
 {
-    if (root) return recursiveSearchNode(root->node, x) ? OK : ERROR;
+    if (root) return recursiveSearchNode(root->node, x) ? SUCCESS : FAILED;
 }
 
 /**
@@ -101,20 +101,20 @@ Status recursiveSearchRBTree(RBRoot *root, RBTreeElemType x)
  *
  * @param[in]  root: the root of the red-black tree
  * @param[in]  x   : the data of the node
- * @return  the operation status, OK is 0, ERROR is -1
+ * @return  the operation status, SUCCESS is 0, FAILED is -1
  */
 Status insertRBTree(RBRoot *root, RBTreeElemType x)
 {
-    if (recursiveSearchNode(root->node, x)) return ERROR;
+    if (recursiveSearchNode(root->node, x)) return FAILED;
 
     Node *node;
     node = createRBTreeNode(x, NULL, NULL, NULL);
-    if (!node) return ERROR;
+    if (!node) return FAILED;
 
     insertBinarySearchTree(root, node);
     RBTreeInsertSelfBalancing(root, node);
 
-    return OK;
+    return SUCCESS;
 }
 
 /**
@@ -122,31 +122,31 @@ Status insertRBTree(RBRoot *root, RBTreeElemType x)
  *
  * @param[in]  root: the root of the red-black tree
  * @param[in]  key : the data of the node to be deleted
- * @return  the operation status, OK is 0, ERROR is -1
+ * @return  the operation status, SUCCESS is 0, FAILED is -1
  */
 Status deleteRBTree(RBRoot *root, RBTreeElemType x)
 {
     Node *p;
     if (p = recursiveSearchNode(root->node, x)) {
         deleteRBTreeNode(root, p);
-        return OK;
+        return SUCCESS;
     }
 
-    return ERROR;
+    return FAILED;
 }
 
 /**
  * 打印红黑树
  *
  * @param[in]  root: the root of the red-black tree
- * @return  the operation status, OK is 0, ERROR is -1
+ * @return  the operation status, SUCCESS is 0, FAILED is -1
  */
 Status printRBTree(RBRoot *root)
 {
     if (root && root->node) {
         PrintRBTreeInfo(root->node, root->node->data, 0);
-        return OK;
+        return SUCCESS;
     }
 
-    return ERROR;
+    return FAILED;
 }
