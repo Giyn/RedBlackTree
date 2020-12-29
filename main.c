@@ -152,7 +152,7 @@ _Noreturn void menu(RBRoot *root)
                 } else printf("不存在红黑树, 请先初始化!\n");
                 break;
             case 11:
-                if (exist_flag) {
+                if (exist_flag && root->node) {
                     RBTreeElemType *max = (RBTreeElemType *)malloc(sizeof(int));
                     RBTreeElemType *min = (RBTreeElemType *)malloc(sizeof(int));
                     maxRBTreeNode(root, max);
