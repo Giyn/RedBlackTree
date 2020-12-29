@@ -158,7 +158,8 @@ _Noreturn void menu(RBRoot *root)
                     maxRBTreeNode(root, max);
                     minRBTreeNode(root, min);
                     printf("红黑树最大结点为[%d], 最小结点为[%d]!\n", *max, *min);
-                } else printf("不存在红黑树, 请先初始化!\n");
+                } else if (!root->node) printf("红黑树为空!\n");
+                else printf("不存在红黑树, 请先初始化!\n");
                 break;
             case 12:  /* 退出程序 */
                 printf("Bye!");
