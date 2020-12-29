@@ -40,34 +40,28 @@ _Noreturn void menu(RBRoot *root)
     int exist_flag = 0;  /* 标记红黑树是否存在 */
     while (true) {
         system("cls");
-        printf("***********************************\n");
-        printf("              红黑树\n");
-        printf("          开发者: 许继元\n");
-        printf("         学号: 3119004757\n");
-        printf("    班级: 计算机科学与技术(1)班\n");
-        printf("    联系邮箱: giyn.jy@gmail.com\n");
-        printf("***********************************\n");
-        printf("-----------------------------------\n");
-        printf(">>> 1.初始化红黑树\n");
-        printf(">>> 2.打印红黑树信息\n");
-        printf(">>> 3.销毁红黑树\n");
-        printf(">>> 4.删除结点\n");
-        printf(">>> 5.插入结点\n");
-        printf(">>> 6.插入指定数量的随机(1-2020)结点\n");
-        printf(">>> 7.查找结点\n");
-        printf(">>> 8.前序遍历\n");
-        printf(">>> 9.中序遍历\n");
-        printf(">>> 10.后序遍历\n");
-        printf(">>> 11.查找红黑树的最大和最小结点\n");
-        printf(">>> 12.退出\n");
-        printf("-----------------------------------\n");
+        printf("***********************************************************\n");
+        printf("**                        红黑树                         **\n");
+        printf("**                    开发者: 许继元                     **\n");
+        printf("**                   学号: 3119004757                    **\n");
+        printf("**              班级: 计算机科学与技术(1)班              **\n");
+        printf("**              联系邮箱: giyn.jy@gmail.com              **\n");
+        printf("***********************************************************\n");
+        printf("-----------------------------------------------------------\n");
+        printf(">>> 1.初始化红黑树     7.插入指定数量的随机(1-2020)结点 <<<\n");
+        printf(">>> 2.打印红黑树信息   8.前序遍历                       <<<\n");
+        printf(">>> 3.销毁红黑树       9.中序遍历                       <<<\n");
+        printf(">>> 4.删除结点        10.后序遍历                       <<<\n");
+        printf(">>> 5.插入结点        11.查找最大和最小结点             <<<\n");
+        printf(">>> 6.查找结点        12.退出                           <<<\n");
+        printf("-----------------------------------------------------------\n");
         if(exist_flag) {
             /* 以凹入法的方式实时打印红黑树 */
             recessedPrintRBTree(root->node, 0);
             if (!root->node) printf("红黑树为空!\n");
         }
         else printf("不存在红黑树!\n");
-        printf("-----------------------------------\n");
+        printf("-----------------------------------------------------------\n");
         printf(">>> 请输入你想执行的操作:");
 
         switch (InputInteger()) {
@@ -111,7 +105,16 @@ _Noreturn void menu(RBRoot *root)
                 }
                 else printf("不存在红黑树, 请先初始化!\n");
                 break;
-            case 6:  /* 随机插入指定数量的结点 */
+            case 6:  /* 查找 */
+                if (exist_flag) {
+                    int search_x;
+                    printf("请输入你想查找的结点:");
+                    search_x = InputInteger();
+                    if ((recursiveSearchRBTree(root, search_x)) == SUCCESS) printf("查找成功, 存在该结点!\n");
+                    else printf("查找失败, 不存在该结点!\n");
+                } else printf("不存在红黑树, 请先初始化!\n");
+                break;
+            case 7:  /* 随机插入指定数量的结点 */
                 if (exist_flag) {
                     /* 设置随机数种子 */
                     srand((unsigned int) time(NULL));
@@ -128,15 +131,6 @@ _Noreturn void menu(RBRoot *root)
                         insertRBTree(root, array[i]);
                     }
                     printf("\n插入结点成功!\n");
-                } else printf("不存在红黑树, 请先初始化!\n");
-                break;
-            case 7:  /* 查找 */
-                if (exist_flag) {
-                    int search_x;
-                    printf("请输入你想查找的结点:");
-                    search_x = InputInteger();
-                    if ((recursiveSearchRBTree(root, search_x)) == SUCCESS) printf("查找成功, 存在该结点!\n");
-                    else printf("查找失败, 不存在该结点!\n");
                 } else printf("不存在红黑树, 请先初始化!\n");
                 break;
             case 8:  /* 前序遍历 */
