@@ -33,8 +33,14 @@ _Noreturn void menu(RBRoot *root) {
     int search_x;
     while (true) {
         system("cls");
-        printf("\n\n\n");
-        printf("-------------------------------\n");
+        printf("***********************************\n");
+        printf("              红黑树\n");
+        printf("          开发者: 许继元\n");
+        printf("         学号: 3119004757\n");
+        printf("    班级: 计算机科学与技术(1)班\n");
+        printf("    联系邮箱: giyn.jy@gmail.com\n");
+        printf("***********************************\n");
+        printf("-----------------------------------\n");
         printf(">>> 1.初始化红黑树\n");
         printf(">>> 2.打印红黑树\n");
         printf(">>> 3.销毁红黑树\n");
@@ -46,14 +52,14 @@ _Noreturn void menu(RBRoot *root) {
         printf(">>> 9.中序遍历\n");
         printf(">>> 10.后序遍历\n");
         printf(">>> 11.退出\n");
-        printf("-------------------------------\n");
+        printf("-----------------------------------\n");
         if(exist_flag) {
             inorderRBTree(root); /* 实时遍历红黑树 */
             if (root->node) printf("(中序遍历)\n");
             else printf("\n");
         }
         else printf("不存在红黑树!\n");
-        printf("-------------------------------\n");
+        printf("-----------------------------------\n");
         printf("----->>> 请输入你想执行的操作:");
 
         switch (InputInteger()) {
