@@ -66,7 +66,7 @@ Status insertRBTree(RBRoot *root, RBTreeElemType x);
 /* 红黑树删除结点 */
 Status deleteRBTree(RBRoot *root, RBTreeElemType x);
 
-/* 打印红黑树 */
+/* 打印红黑树信息 */
 Status printRBTree(RBRoot *root);
 
 #endif /* RBTREE_H */

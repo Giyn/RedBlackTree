@@ -320,8 +320,8 @@ Status deleteRBTreeNode(RBRoot *root, Node *node)
 Status PrintRBTreeInfo(RBTree tree, RBTreeElemType data, int position)
 {
     if (tree) {
-        if (position == 0) printf("[%d](BLACK)是根节点\n", tree->data);
-        else printf("[%d](%s)是[%d]的%s孩子结点\n", tree->data, RBTreeIsRed(tree) ? "RED" : "BLACK",
+        if (position == 0) printf("[%d] (黑) 是根节点\n", tree->data);
+        else printf("[%d] (%s) 是 [%d] 的 {%s} 孩子结点\n", tree->data, RBTreeIsRed(tree) ? "红" : "黑",
                     data, position == -1 ? "左" : "右");
 
         PrintRBTreeInfo(tree->left, tree->data, -1);
@@ -345,7 +345,7 @@ Status recessedPrintRBTree(RBTree tree, int depth)
     if (!tree) return FAILED;
     recessedPrintRBTree(tree->right, depth + 1);
     for (int i = 0; i < depth; i++) printf("    ");
-    printf("%d(%s)\n", tree->data, RBTreeIsRed(tree) ? "R" : "B");
+    printf("[%-d(%s)]\n", tree->data, RBTreeIsRed(tree) ? "红" : "黑");
     recessedPrintRBTree(tree->left, depth + 1);
 
     return SUCCESS;
