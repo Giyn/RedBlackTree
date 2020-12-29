@@ -10,6 +10,7 @@
 #include <stdbool.h>
 #include <time.h>
 #include "RedBlackTree.h"
+#include "RedBlackTreeUtils.h"
 
 _Noreturn void menu();
 
@@ -54,9 +55,9 @@ _Noreturn void menu(RBRoot *root) {
         printf(">>> 11.退出\n");
         printf("-----------------------------------\n");
         if(exist_flag) {
-            inorderRBTree(root); /* 实时遍历红黑树 */
-            if (root->node) printf("(中序遍历)\n");
-            else printf("\n");
+            /* 实时打印红黑树 */
+            recessedPrintRBTree(root->node, 0);
+            if (!root->node) printf("\n");
         }
         else printf("不存在红黑树!\n");
         printf("-----------------------------------\n");
