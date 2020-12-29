@@ -37,10 +37,7 @@ void main()
  */
 _Noreturn void menu(RBRoot *root)
 {
-    int exist_flag = 0;
-    int delete_x;
-    int insert_x;
-    int search_x;
+    int exist_flag = 0;  /* 标记红黑树是否存在 */
     while (true) {
         system("cls");
         printf("***********************************\n");
@@ -64,7 +61,7 @@ _Noreturn void menu(RBRoot *root)
         printf(">>> 11.退出\n");
         printf("-----------------------------------\n");
         if(exist_flag) {
-            /* 实时打印红黑树 */
+            /* 以凹入法的方式实时打印红黑树 */
             recessedPrintRBTree(root->node, 0);
             if (!root->node) printf("红黑树为空!\n");
         }
@@ -91,6 +88,7 @@ _Noreturn void menu(RBRoot *root)
                 break;
             case 4:  /* 删除 */
                 if (exist_flag) {
+                    int delete_x;
                     printf("请输入你想删除的结点:");
                     delete_x = InputInteger();
                     if ((deleteRBTree(root, delete_x)) == SUCCESS) printf("删除结点成功!\n");
@@ -99,6 +97,7 @@ _Noreturn void menu(RBRoot *root)
                 break;
             case 5:  /* 插入 */
                 if (exist_flag){
+                    int insert_x;
                     Status insert_status;
                     double cost;
                     printf("请输入你想插入的结点:");
@@ -132,6 +131,7 @@ _Noreturn void menu(RBRoot *root)
                 break;
             case 7:  /* 查找 */
                 if (exist_flag) {
+                    int search_x;
                     printf("请输入你想查找的结点:");
                     search_x = InputInteger();
                     if ((recursiveSearchRBTree(root, search_x)) == SUCCESS) printf("查找成功, 存在该结点!\n");
