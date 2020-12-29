@@ -7,10 +7,10 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "RedBlackTree.h"
-#include "RedBlackTreeUtils.h"
-#include "BinarySearchTree.h"
-#include "BinaryTree.h"
+#include "../HeaderFiles/RedBlackTree.h"
+#include "../HeaderFiles/RedBlackTreeUtils.h"
+#include "../HeaderFiles/BinarySearchTree.h"
+#include "../HeaderFiles/BinaryTree.h"
 
 /**
  * 创建红黑树

@@ -5,7 +5,7 @@
  * @date 2020/12/18
  */
 
-#include "BalancedBinaryTree.h"
+#include "../HeaderFiles/BalancedBinaryTree.h"
 
 /**
  * 将平衡二叉树的结点node左旋

@@ -6,7 +6,7 @@
  */
 
 #include <stdio.h>
-#include "BinarySearchTree.h"
+#include "../HeaderFiles/BinarySearchTree.h"
 
 /**
  * 二叉查找树插入结点

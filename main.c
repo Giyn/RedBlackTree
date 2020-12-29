@@ -10,8 +10,8 @@
 #include <stdbool.h>
 #include <time.h>
 #include <Windows.h>
-#include "RedBlackTree.h"
-#include "RedBlackTreeUtils.h"
+#include "HeaderFiles/RedBlackTree.h"
+#include "HeaderFiles/RedBlackTreeUtils.h"
 
 LARGE_INTEGER freq, begin, end;
 

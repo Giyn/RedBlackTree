@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "BinaryTree.h"
+#include "../HeaderFiles/BinaryTree.h"
 
 /**
  * 销毁二叉树
