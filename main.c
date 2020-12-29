@@ -9,8 +9,15 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
+#include <Windows.h>
 #include "RedBlackTree.h"
 #include "RedBlackTreeUtils.h"
+
+LARGE_INTEGER freq, begin, end;
+
+void beginRecord();
+
+double endRecord();
 
 _Noreturn void menu();
 
@@ -86,16 +93,21 @@ _Noreturn void menu(RBRoot *root)
                 if (exist_flag) {
                     printf("请输入你想删除的结点:");
                     delete_x = InputInteger();
-                    if ((deleteRBTree(root, delete_x)) == OK) printf("删除结点成功!\n");
+                    if ((deleteRBTree(root, delete_x)) == SUCCESS) printf("删除结点成功!\n");
                     else printf("删除结点失败, 不存在该结点!\n");
                 } else printf("不存在红黑树, 请先初始化!\n");
                 break;
             case 5:  /* 插入 */
                 if (exist_flag){
+                    Status insert_status;
+                    double cost;
                     printf("请输入你想插入的结点:");
                     insert_x = InputInteger();
-                    insertRBTree(root, insert_x);
-                    printf("插入结点成功!\n");
+                    beginRecord();
+                    insert_status = insertRBTree(root, insert_x);
+                    cost = endRecord();
+                    if (insert_status == SUCCESS) printf("插入结点成功!\n插入耗费时间: %lf ms.\n", cost);
+                    else printf("插入结点失败, 该结点已存在!\n");
                 }
                 else printf("不存在红黑树, 请先初始化!\n");
                 break;
@@ -122,7 +134,7 @@ _Noreturn void menu(RBRoot *root)
                 if (exist_flag) {
                     printf("请输入你想查找的结点:");
                     search_x = InputInteger();
-                    if ((recursiveSearchRBTree(root, search_x)) == OK) printf("查找成功, 存在该结点!\n");
+                    if ((recursiveSearchRBTree(root, search_x)) == SUCCESS) printf("查找成功, 存在该结点!\n");
                     else printf("查找失败, 不存在该结点!\n");
                 }
                 break;
@@ -172,7 +184,7 @@ int InputInteger()
 
     do {
         scanf("%s", str);
-        status = SUCCESS;
+        status = TRUE;
         int i;
         for (i = 0; str[i] != '\0'; i++) {
             /* check for illegal characters */
@@ -210,4 +222,15 @@ int InputInteger()
     } while (status == FALSE);
 
     return integer;
+}
+
+void beginRecord() {
+    QueryPerformanceFrequency(&freq);
+    QueryPerformanceCounter(&begin);
+}
+
+double endRecord() {
+    QueryPerformanceCounter(&end);
+
+    return (end.QuadPart - begin.QuadPart) / (double)freq.QuadPart * 1000.0f;
 }
