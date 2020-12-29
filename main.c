@@ -84,9 +84,14 @@ _Noreturn void menu(RBRoot *root)
             case 4:  /* 删除 */
                 if (exist_flag) {
                     int delete_x;
+                    Status delete_status;
+                    double cost;
                     printf("请输入你想删除的结点:");
                     delete_x = InputInteger();
-                    if ((deleteRBTree(root, delete_x)) == SUCCESS) printf("删除结点成功!\n");
+                    beginRecord();
+                    delete_status = deleteRBTree(root, delete_x);
+                    cost = endRecord();
+                    if (delete_status == SUCCESS) printf("删除结点成功!\n删除耗费时间: %lf ms.\n", cost);
                     else printf("删除结点失败, 不存在该结点!\n");
                 } else printf("不存在红黑树, 请先初始化!\n");
                 break;
@@ -102,8 +107,7 @@ _Noreturn void menu(RBRoot *root)
                     cost = endRecord();
                     if (insert_status == SUCCESS) printf("插入结点成功!\n插入耗费时间: %lf ms.\n", cost);
                     else printf("插入结点失败, 该结点已存在!\n");
-                }
-                else printf("不存在红黑树, 请先初始化!\n");
+                } else printf("不存在红黑树, 请先初始化!\n");
                 break;
             case 6:  /* 查找 */
                 if (exist_flag) {
