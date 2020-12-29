@@ -143,7 +143,7 @@ _Noreturn void menu(RBRoot *root) {
                 } else printf("不存在红黑树, 请先初始化!\n");
                 break;
             case 11:  /* 退出程序 */
-                printf("再见!");
+                printf("Bye!");
                 exit(0);
             default:
                 printf("不存在该选项, 请重新输入!\n");
