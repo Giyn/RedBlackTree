@@ -16,7 +16,8 @@ _Noreturn void menu();
 
 int InputInteger();
 
-void main() {
+void main()
+{
     RBRoot *root = NULL;
     menu(root);
 }
@@ -27,7 +28,8 @@ void main() {
  * @param[in]  root: the root of the red-black tree
  * @return  none
  */
-_Noreturn void menu(RBRoot *root) {
+_Noreturn void menu(RBRoot *root)
+{
     int exist_flag = 0;
     int delete_x;
     int insert_x;
@@ -159,7 +161,8 @@ _Noreturn void menu(RBRoot *root) {
  * @param[in]  none
  * @return  legal integer
  */
-int InputInteger() {
+int InputInteger()
+{
     /* store converted numbers */
     int integer = 0;
     /* flag status */
