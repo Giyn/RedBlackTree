@@ -49,7 +49,7 @@ _Noreturn void menu(RBRoot *root)
         printf(">>> 3.销毁红黑树\n");
         printf(">>> 4.删除结点\n");
         printf(">>> 5.插入结点\n");
-        printf(">>> 6.插入指定数量的随机(1-100)结点\n");
+        printf(">>> 6.插入指定数量的随机(1-1000)结点\n");
         printf(">>> 7.查找结点\n");
         printf(">>> 8.前序遍历\n");
         printf(">>> 9.中序遍历\n");
@@ -59,11 +59,11 @@ _Noreturn void menu(RBRoot *root)
         if(exist_flag) {
             /* 实时打印红黑树 */
             recessedPrintRBTree(root->node, 0);
-            if (!root->node) printf("\n");
+            if (!root->node) printf("红黑树为空!\n");
         }
         else printf("不存在红黑树!\n");
         printf("-----------------------------------\n");
-        printf("----->>> 请输入你想执行的操作:");
+        printf(">>> 请输入你想执行的操作:");
 
         switch (InputInteger()) {
             case 1:  /* 初始化 */
@@ -108,8 +108,8 @@ _Noreturn void menu(RBRoot *root)
                     length_of_array = InputInteger();
                     /* 以变量表示数组长度 */
                     int *const array = (int *) malloc(sizeof(int) * length_of_array);
-                    /* 生成元素位于1~100的数组 */
-                    for (i = 0; i < length_of_array; i++) array[i] = rand() % 100;
+                    /* 生成元素位于1~1000的数组 */
+                    for (i = 0; i < length_of_array; i++) array[i] = rand() % 1000;
                     printf("插入的结点为: ");
                     for (i = 0; i < length_of_array; i++) {
                         printf("%d ", array[i]);
