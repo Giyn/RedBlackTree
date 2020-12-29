@@ -224,11 +224,23 @@ int InputInteger()
     return integer;
 }
 
+/**
+ * 开始记录
+ *
+ * @param[in]  none
+ * @return  none
+ */
 void beginRecord() {
     QueryPerformanceFrequency(&freq);
     QueryPerformanceCounter(&begin);
 }
 
+/**
+ * 停止记录
+ *
+ * @param[in]  none
+ * @return  execution time of the program
+ */
 double endRecord() {
     QueryPerformanceCounter(&end);
 
