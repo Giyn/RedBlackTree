@@ -332,3 +332,21 @@ Status PrintRBTreeInfo(RBTree tree, RBTreeElemType data, int position)
 
     return ERROR;
 }
+
+/**
+ * °¼Èë·¨´òÓ¡ºìºÚÊ÷
+ *
+ * @param[in]  tree : the node of the red-black tree
+ * @param[in]  depth: the depth of the red-black tree node
+ * @return  the operation status, OK is 0, ERROR is -1
+ */
+Status recessedPrintRBTree(RBTree tree, int depth)
+{
+    if (!tree) return ERROR;
+    recessedPrintRBTree(tree->right, depth + 1);
+    for (int i = 0; i < depth; i++) printf("    ");
+    printf("%d(%s)\n", tree->data, RBTreeIsRed(tree) ? "R" : "B");
+    recessedPrintRBTree(tree->left, depth + 1);
+
+    return OK;
+}

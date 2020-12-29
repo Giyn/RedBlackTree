@@ -29,4 +29,7 @@ Status deleteRBTreeNode(RBRoot *root, Node *node);
 /* 红黑树信息的打印 */
 Status PrintRBTreeInfo(RBTree tree, RBTreeElemType data, int position);
 
+/* 凹入法打印红黑树 */
+Status recessedPrintRBTree(RBTree tree, int depth);
+
 #endif /* RBTREEUTILS_H */
