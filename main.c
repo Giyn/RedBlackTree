@@ -58,7 +58,8 @@ _Noreturn void menu(RBRoot *root)
         printf(">>> 8.前序遍历\n");
         printf(">>> 9.中序遍历\n");
         printf(">>> 10.后序遍历\n");
-        printf(">>> 11.退出\n");
+        printf(">>> 11.查找红黑树的最大和最小结点\n");
+        printf(">>> 12.退出\n");
         printf("-----------------------------------\n");
         if(exist_flag) {
             /* 以凹入法的方式实时打印红黑树 */
@@ -156,7 +157,16 @@ _Noreturn void menu(RBRoot *root)
                     printf("\n");
                 } else printf("不存在红黑树, 请先初始化!\n");
                 break;
-            case 11:  /* 退出程序 */
+            case 11:
+                if (exist_flag) {
+                    RBTreeElemType *max = (RBTreeElemType *)malloc(sizeof(int));
+                    RBTreeElemType *min = (RBTreeElemType *)malloc(sizeof(int));
+                    maxRBTreeNode(root, max);
+                    minRBTreeNode(root, min);
+                    printf("红黑树最大结点为[%d], 最小结点为[%d]!\n", *max, *min);
+                } else printf("不存在红黑树, 请先初始化!\n");
+                break;
+            case 12:  /* 退出程序 */
                 printf("Bye!");
                 exit(0);
             default:
