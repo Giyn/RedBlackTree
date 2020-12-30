@@ -59,8 +59,7 @@ _Noreturn void menu(RBRoot *root)
             /* 以凹入法的方式实时打印红黑树 */
             recessedPrintRBTree(root->node, 0);
             if (!root->node) printf("红黑树为空!\n");
-        }
-        else printf("不存在红黑树!\n");
+        } else printf("不存在红黑树!\n");
         printf("-----------------------------------------------------------\n");
         printf(">>> 请输入你想执行的操作:");
 
@@ -155,7 +154,7 @@ _Noreturn void menu(RBRoot *root)
                     printf("\n");
                 } else printf("不存在红黑树, 请先初始化!\n");
                 break;
-            case 11:
+            case 11:  /* 查找最大和最小结点 */
                 if (exist_flag && root->node) {
                     RBTreeElemType *max = (RBTreeElemType *)malloc(sizeof(int));
                     RBTreeElemType *min = (RBTreeElemType *)malloc(sizeof(int));
